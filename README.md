@@ -1,6 +1,6 @@
-# Portfolio Blog Starter
+# Boro Portfolio Blog
 
-This is a porfolio site template complete with a blog. Includes:
+This ismy porfolio site with a blog. Includes:
 
 - MDX and Markdown support
 - Optimized for SEO (sitemap, robots, JSON-LD schema)
@@ -11,11 +11,7 @@ This is a porfolio site template complete with a blog. Includes:
 - Vercel Speed Insights / Web Analytics
 - Geist font
 
-## Demo
-
-https://portfolio-blog-starter.vercel.app
-
-## How to Use
+## How to use the starter template
 
 You can choose from one of the following two methods to use this repository:
 
