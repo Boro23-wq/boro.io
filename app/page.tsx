@@ -71,7 +71,7 @@ export default function Page() {
       <div className='flex items-center mt-8'>
         <h4 className="font-medium text-xl tracking-tight">current experience</h4>
       </div>
-      <div className="my-6 flex w-full flex-col space-x-0 space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+      <div className="pt-4 flex w-full flex-col space-x-0 space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
         <WorkBadge
           img={beaconLogo}
           company="Beacon Technologies, Inc."
@@ -79,13 +79,11 @@ export default function Page() {
           link="/work"
         />
       </div>
-      <div className="my-6">
-        <div className='flex items-center mt-8'>
-          <h4 className="font-medium text-xl tracking-tight">my blog</h4>
-        </div>
-        <div className="my-4">
-          <BlogPosts page='home' />
-        </div>
+      <div className='flex items-center mt-8'>
+        <h4 className="font-medium text-xl tracking-tight">my blog</h4>
+      </div>
+      <div className="my-4">
+        <BlogPosts page='home' />
       </div>
     </section>
   )

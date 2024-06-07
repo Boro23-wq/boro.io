@@ -26,6 +26,7 @@
   }
   html {
     color-scheme: dark;
+    background-color: rgb(17 16 16 / var(--tw-bg-opacity));
   }
 }
 
@@ -127,16 +128,6 @@ html {
 .prose td {
     @apply py-1 pr-4
 }
-
-/* <style jsx>{`
-  table {
-    width: 100%;
-    border-collapse: collapse; /* Ensure borders don't collapse */
-  /* }
-  th, td {
-    padding: 0.25em;
-  }
-`}</style> */ */
 
 .prose > :first-child {
   /* Override removing top margin, causing layout shift */
