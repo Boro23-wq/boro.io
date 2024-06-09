@@ -77,7 +77,7 @@ export function BlogPosts({ page }: BlogPostsProps) {
       {groupedBlogs.map(([year, posts]) => (
         <div key={year}>
           <div className="flex relative">
-            <p className="text-neutral-400 dark:text-neutral-600 w-[100px] tabular-nums relative">
+            <p className="text-sm text-neutral-400 dark:text-neutral-600 w-[100px] tabular-nums relative">
               {year}
             </p>
             <hr className="ml-4 absolute left-10 right-0 top-1/2 transform -translate-y-1/2 border-t border-neutral-200 dark:border-neutral-800" />
@@ -93,11 +93,11 @@ export function BlogPosts({ page }: BlogPostsProps) {
                 className="mb-5 flex flex-col space-y-1"
                 href={`/blog/${post.slug}`}
               >
-                <div className="w-full flex flex-col justify-between md:flex-row space-x-0 md:space-x-2">
+                <div className="items-center w-full flex justify-between  space-x-0 md:space-x-2">
                   <p className="ml-14 title transition-all text-neutral-600 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-200 tracking-tight">
                     {post.metadata.title}
                   </p>
-                  <p className="text-neutral-400 dark:text-neutral-600">
+                  <p className="text-sm text-neutral-400 dark:text-neutral-600">
                     {month}/{date}
                   </p>
                 </div>

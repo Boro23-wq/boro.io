@@ -35,9 +35,9 @@ export default function Page() {
       experiences. Explore my work and discover how I bridge the gap between
       functionality and user-centered design.`}
 
-      {/* blog */}
+      {/* highlight */}
       <div className="flex items-center mt-8">
-        <h4 className="font-medium text-xl tracking-tight">my work</h4>
+        <h4 className="font-medium text-xl tracking-tight">my highlight</h4>
       </div>
       <div className="my-4">
         <Scroller />
