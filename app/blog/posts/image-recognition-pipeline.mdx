@@ -1,12 +1,14 @@
 ---
 title: AWS image recognition pipeline using S3, SQS, and Rekognition.
-publishedAt: '2022-10-24'
+publishedAt: "2022-10-24"
 summary: An image recognition pipeline in AWS, using two parallel EC2 instances, S3 for cloud storage, SQS to communicate between VMs, and Rekognition for the machine learning algorithm to detect objects and texts.
 ---
 
 An image recognition pipeline in AWS, using two parallel EC2 instances, S3, SQS, and Rekognition.
 
-<b>Goal</b>: The purpose of this project is to learn how to use the Amazon AWS cloud platform and to develop an AWS application that uses existing cloud services. Specifically, we will learn:
+<b>Goal</b>: The purpose of this project is to learn how to use the Amazon AWS
+cloud platform and to develop an AWS application that uses existing cloud
+services. Specifically, we will learn:
 
 1. How to create VMs (EC2 instances) in the cloud.
 2. How to use cloud storage (S3) in your applications.
@@ -14,7 +16,10 @@ An image recognition pipeline in AWS, using two parallel EC2 instances, S3, SQS,
 4. How to program distributed applications in Java on Linux VMs in the cloud, and,
 5. How to use a machine learning service (AWS Rekognition) in the cloud.
 
-<b>Description</b>: We are building an image recognition pipeline in AWS, using two EC2 instances, S3, SQS, and Rekognition. The project is written in Java on Amazon Linux VMs. For the rest of the description, you should refer to the figure below:
+<b>Description</b>: We are building an image recognition pipeline in AWS, using
+two EC2 instances, S3, SQS, and Rekognition. The project is written in Java on
+Amazon Linux VMs. For the rest of the description, you should refer to the
+figure below:
 
 <img src="/blog/image-rec-pipeline/flow-diagram.png" alt="flow diagram" />
 
@@ -47,7 +52,8 @@ The following solution was attempted using the AWS account provided by my school
    - [x] Allow HTTP traffic from the internet
    - [x] And instead of <b>Anywhere</b>, select <b>My IP</b> to only send traffic from your IP address.
 7. It is recommended to not change settings under <b>Configure storage</b> and <b>Advanced details</b> unless you know what you are doing.
-   - <b>Note:</b> You have to follow the above step twice to create two instances. My instances are named <b>EC2-A</b> and <b>EC2-B</b> and looks like this:
+   - <b>Note:</b> You have to follow the above step twice to create two instances.
+     My instances are named <b>EC2-A</b> and <b>EC2-B</b> and looks like this:
 
 ![Running EC2 instances](https://raw.githubusercontent.com/Boro23-wq/AWS-Image-Recognition-Pipeline/master/assets/running-ec2-instances.png)
 
@@ -70,7 +76,8 @@ The following solution was attempted using the AWS account provided by my school
    > In simple words, a _JAR file_ is a file that contains a compressed version of .class files, audio files, image files, or directories.
 4. Once you have the JAR files ready you can upload it to the respective EC2 instances using <b>Cyberduck</b> (Mac) or <b>WinSCP</b> (Windows). I am using Cyberduck for the project since I'm working with a Mac system.
    - If you want to learn how to upload file in EC2 instance using Cyberduck, follow the link - [FTP into your EC2-instance with Cyberduck](http://www.brianhoshi.com/blog/how-to-ftp-into-your-ec2-instance-with-cyberduck/)
-   - <b>Note</b> The username while you FTP to your EC2 instance using Cyberduck should be 'ec2-user'.
+   - <b>Note</b> The username while you FTP to your EC2 instance using Cyberduck
+     should be 'ec2-user'.
 
 ## SSH Access from a Mac:
 

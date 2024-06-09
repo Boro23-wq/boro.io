@@ -1,7 +1,7 @@
-import { BlogPosts } from 'app/components/posts'
-import Image from 'next/image';
-import beaconLogo from 'app/img/beacon-logo.png';
-import Link from 'next/link';
+// import { BlogPosts } from "app/components/posts";
+// import Image from "next/image";
+import Link from "next/link";
+import Scroller from "./components/scroller";
 
 function ArrowIcon() {
   return (
@@ -20,71 +20,55 @@ function ArrowIcon() {
   );
 }
 
-function WorkBadge({ img, company, title, link }) {
-  return (
-    <div className="group flex w-full">
-      <Link
-        href={link}
-        className="flex w-full items-center justify-between rounded border border-neutral-200 bg-neutral-50 px-3 py-3 dark:border-neutral-700 dark:bg-neutral-800"
-      >
-        <div className="flex items-center space-x-3">
-          <div className="relative h-16">
-            <Image
-              alt="avatar"
-              src={img}
-              height={64}
-              width={64}
-              sizes="33vw"
-              className="h-16 w-16 rounded-full object-contain bg-gray-100 border border-neutral-200 dark:border-neutral-700"
-              priority
-            />
-          </div>
-          <div className="flex flex-col">
-            <p className="font-medium text-neutral-900 dark:text-neutral-100">
-              {company}
-            </p>
-            <p className="text-sm text-gray-400">
-              {title}
-            </p>
-          </div>
-        </div>
-        <div className="transform text-neutral-700 transition-transform duration-300 group-hover:-rotate-12 dark:text-neutral-300">
-          <ArrowIcon />
-        </div>
-      </Link>
-    </div>
-  );
-}
-
 export default function Page() {
   return (
     <section>
-      <div className="prose prose-neutral dark:prose-invert">
-        <p>
-          {`Hey 👋 I'm Sintu Boro. I bring a blend of IT consulting, development, and design expertise. 
-            I have transformed complex business processes into efficient and 
-            user-friendly solutions to help create seamless digital experiences. 
-            Explore my work and discover how I bridge the gap between functionality 
-            and user-centered design.`}
-        </p>
+      {/* intro */}
+      <div className="flex items-center mb-4">
+        <h4 className="heading font-medium text-xl tracking-tight">
+          Elevating experiences.
+        </h4>
       </div>
-      <div className='flex items-center mt-8'>
-        <h4 className="font-medium text-xl tracking-tight">current experience</h4>
-      </div>
-      <div className="pt-4 flex w-full flex-col space-x-0 space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-        <WorkBadge
-          img={beaconLogo}
-          company="Beacon Technologies, Inc."
-          title="IT Consultant/Programmer Analyst IV for Wisconsin DCF"
-          link="/work"
-        />
-      </div>
-      <div className='flex items-center mt-8'>
-        <h4 className="font-medium text-xl tracking-tight">my blog</h4>
+      {`Hi 👋, I'm Sintu Boro. I bring a blend of IT consulting, development, and
+      design expertise. I have transformed complex business processes into
+      efficient and user-friendly solutions to help create seamless digital
+      experiences. Explore my work and discover how I bridge the gap between
+      functionality and user-centered design.`}
+
+      {/* blog */}
+      <div className="flex items-center mt-8">
+        <h4 className="font-medium text-xl tracking-tight">my work</h4>
       </div>
       <div className="my-4">
-        <BlogPosts page='home' />
+        <Scroller />
+      </div>
+
+      {/* experience */}
+      <div className="flex items-center mt-8">
+        <h4 className="font-medium text-xl tracking-tight">
+          current experience
+        </h4>
+      </div>
+      <div className="pt-4 flex w-full flex-col space-x-0 space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+        {`As a developer/programmer analyst, I specialize in customizing and
+        optimizing software platforms for improved efficiency and user
+        experience. I focus on delivering impactful solutions that enhance both
+        the functionality and usability of the systems I work with.`}
+      </div>
+      <div className="pt-4 flex w-full flex-col space-x-0 space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+        <p>
+          Currently, working with the{" "}
+          <Link
+            className="transition-all border-b border-neutral-300 dark:border-neutral-600 dark:hover:text-neutral-200 hover:text-neutral-500"
+            href="https://www.beacontechinc.com/"
+            target="_blank"
+          >
+            Beacon Tech
+          </Link>{" "}
+          team as a Programmer Analyst IV for Wisconsin Department of Children
+          and Families (DCF).
+        </p>
       </div>
     </section>
-  )
+  );
 }

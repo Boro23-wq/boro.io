@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 ::selection {
   background-color: #47a3f3;
@@ -25,6 +25,7 @@
     --sh-string: #0fa295;
   }
   html {
+    font-family: sans-serif;
     color-scheme: dark;
     background-color: rgb(17 16 16 / var(--tw-bg-opacity));
   }
@@ -32,6 +33,11 @@
 
 html {
   min-width: 360px;
+}
+
+.heading {
+  font-family: "newsreader";
+  font-style: italic;
 }
 
 .prose .anchor {
@@ -54,7 +60,7 @@ html {
 
 .prose .anchor:after {
   @apply text-neutral-300 dark:text-neutral-700;
-  content: '#';
+  content: "#";
 }
 
 .prose *:hover > .anchor {
@@ -62,18 +68,16 @@ html {
 }
 
 .prose pre {
-  @apply my-4 bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900 py-2 px-3 text-sm;
+  @apply my-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-700 py-2 px-3 text-sm;
 }
 
 .prose code {
-  @apply px-1 py-0.5 rounded-lg;
-  font-size: 0.95em;
+  @apply px-2 py-1 bg-neutral-800 rounded-md text-sm font-normal;
 }
 
 .prose pre code {
   @apply p-0;
   border: initial;
-  line-height: 1.5;
 }
 
 .prose code span {
@@ -90,19 +94,19 @@ html {
 }
 
 .prose h1 {
-  @apply text-4xl font-medium tracking-tight mt-6 mb-1;
+  @apply text-4xl font-medium tracking-tight mt-6 mb-3;
 }
 
 .prose h2 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-1;
+  @apply text-xl font-medium tracking-tight mt-6 mb-3;
 }
 
 .prose h3 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-1;
+  @apply text-xl font-medium tracking-tight mt-6 mb-3;
 }
 
 .prose h4 {
-  @apply text-lg font-medium tracking-tight mt-6 mb-1;
+  @apply text-lg font-medium tracking-tight mt-6 mb-3;
 }
 
 .prose strong {
@@ -122,17 +126,31 @@ html {
 }
 
 .prose th {
-    @apply text-left pb-2 border-b border-gray-200 dark:border-gray-600
+  @apply text-left pb-2 border-b border-gray-200 dark:border-gray-600;
 }
 
 .prose td {
-    @apply py-1 pr-4
+  @apply py-1 pr-4;
 }
 
 .prose > :first-child {
   /* Override removing top margin, causing layout shift */
   margin-top: 1.25em !important;
   margin-bottom: 1.25em !important;
+}
+
+.title {
+  text-wrap: balance;
+}
+
+.blurry:hover .title:not(:hover) {
+  filter: blur(2px);
+  transition: filter 0.2s;
+}
+
+.blurry .title:hover {
+  filter: blur(0);
+  transition: filter 0.2s;
 }
 
 pre::-webkit-scrollbar {
@@ -145,8 +163,8 @@ pre {
 }
 
 /* Remove Safari input shadow on mobile */
-input[type='text'],
-input[type='email'] {
+input[type="text"],
+input[type="email"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -159,6 +177,30 @@ table {
   white-space: nowrap;
 }
 
-.title {
-  text-wrap: balance;
+blockquote {
+  @apply italic;
+}
+
+.scroller {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 var(--gradient-size-start),
+    #000 calc(100% - var(--gradient-size-end)),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 var(--gradient-size-start),
+    #000 calc(100% - var(--gradient-size-end)),
+    transparent 100%
+  );
+}
+
+@media (max-width: 688px) {
+  .scroller {
+    --gradient-size-start: 2px;
+    --gradient-size-end: 20%;
+  }
 }

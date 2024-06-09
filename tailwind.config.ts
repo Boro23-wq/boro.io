@@ -2,7 +2,12 @@
 module.exports = {
   darkMode: ["class"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        newsreader: ["var(--font-newsreader)"],
+      },
+    },
   },
+  plugin: [],
   // ...
-}
+};
