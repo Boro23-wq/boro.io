@@ -1,11 +1,20 @@
 @import "tailwindcss";
 
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--mono5) transparent;
+}
+
 ::selection {
   background-color: #47a3f3;
   color: #fefefe;
 }
 
 :root {
+  /* palette */
+  --gray5: #2e2e2e;
+
+  /* code formatiting */
   --sh-class: #2d5e9d;
   --sh-identifier: #354150;
   --sh-sign: #8996a3;
@@ -15,6 +24,9 @@
   --sh-jsxliterals: #6266d1;
   --sh-property: #e25a1c;
   --sh-entity: #e25a1c;
+
+  /* color */
+  --mono5: var(--gray5);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -27,16 +39,23 @@
   html {
     font-family: sans-serif;
     color-scheme: dark;
-    background-color: rgb(17 16 16 / var(--tw-bg-opacity));
+    background-color: #1a1a1a;
   }
 }
 
 html {
   min-width: 360px;
+  color: #d4d4d4;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 .heading {
   font-family: "newsreader";
+  font-size: 18.5px;
   font-style: italic;
 }
 
@@ -143,14 +162,14 @@ html {
   text-wrap: balance;
 }
 
-.blurry:hover .title:not(:hover) {
-  filter: blur(2px);
-  transition: filter 0.2s;
+.blog-blur:hover .title:not(:hover) {
+  filter: blur(4px);
+  transition: filter 0.25s;
 }
 
-.blurry .title:hover {
+.blog-blur .title:hover {
   filter: blur(0);
-  transition: filter 0.2s;
+  transition: filter 0.25s;
 }
 
 pre::-webkit-scrollbar {
@@ -196,10 +215,6 @@ blockquote {
     #000 calc(100% - var(--gradient-size-end)),
     transparent 100%
   );
-}
-
-.backdrop-blur {
-  @apply backdrop-filter backdrop-saturate-[180%] backdrop-blur-[5px];
 }
 
 @media (max-width: 688px) {

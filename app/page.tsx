@@ -24,18 +24,21 @@ export default function Page() {
       <section>
         {/* intro */}
         <div className="flex items-center mb-4">
-          <h4 className="heading font-medium text-xl tracking-tight">
-            Elevating experiences.
+          <h4 className="font-medium text-lg mb-5 tracking-normal">
+            Sintu Boro
           </h4>
         </div>
-        {`Hey 👋, I'm Sintu Boro. I bring a blend of IT consulting, development, and
-      design expertise. I have transformed complex business processes into
-      efficient and user-friendly solutions to help create seamless digital
-      experiences. Explore my work and discover how I bridge the gap between
-      functionality and user-centered design.`}
+        <p className="text-md">
+          <span className="heading">Elevating experiences</span>. I bring a
+          blend of IT consulting, development, and design expertise. I have
+          transformed complex business processes into efficient and
+          user-friendly solutions to help create seamless digital experiences.
+          Explore my work and discover how I bridge the gap between
+          functionality and user-centered design.
+        </p>
 
         {/* highlight */}
-        <div className="flex items-center mt-8">
+        <div className="flex items-center mt-14">
           <h4 className="font-medium text-xl tracking-tight">my highlight</h4>
         </div>
         <div className="my-4">
@@ -43,8 +46,8 @@ export default function Page() {
         </div>
 
         {/* experience */}
-        <div className="flex items-center mt-8">
-          <h4 className="font-medium text-xl tracking-tight">
+        <div className="flex items-center mt-14">
+          <h4 className="font-medium text-xl tracking-tight mb-2">
             current experience
           </h4>
         </div>
@@ -58,7 +61,7 @@ export default function Page() {
           <p>
             Currently, working with the{" "}
             <Link
-              className="transition-all border-b border-neutral-300 dark:border-neutral-600 dark:hover:text-neutral-200 hover:text-neutral-500"
+              className="transition-all decoration-neutral-200 dark:decoration-neutral-600 underline underline-offset-4 dark:hover:text-neutral-200 hover:text-neutral-500"
               href="https://www.beacontechinc.com/"
               target="_blank"
             >

@@ -1,4 +1,5 @@
 import "./global.css";
+import Head from "next/head";
 import { Newsreader } from "next/font/google";
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
@@ -7,7 +8,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Footer from "./components/footer";
 import { baseUrl } from "./sitemap";
-import Head from "next/head";
+import DynamicFavicon from "./components/dynamic-favicon";
 
 const newsreader = Newsreader({
   style: ["italic"],
@@ -30,6 +31,33 @@ export const metadata: Metadata = {
     siteName: "Sintu Boro",
     locale: "en_US",
     type: "website",
+  },
+  icons: {
+    icon: "https://example.com/icon.png", // Default icon
+    apple: "/favicons/apple-icon.png", // Apple touch icon
+    other: [
+      {
+        rel: "icon",
+        url: "favicons/favicon-16x16.png",
+        sizes: "16x16",
+      },
+      {
+        rel: "icon",
+        url: "favicons/favicon-32x32.png",
+        sizes: "32x32",
+      },
+      {
+        rel: "icon",
+        url: "favicons/favicon-60x60.png",
+        sizes: "60x60",
+      },
+      {
+        rel: "icon",
+        url: "favicons/favicon-192x192.png",
+        sizes: "192x192",
+      },
+      { rel: "shortcut icon", url: "favicons/favicon.ico" },
+    ],
   },
   robots: {
     index: true,
@@ -61,9 +89,10 @@ export default function RootLayout({
       )}
     >
       <Head>
-        <link rel="icon" href="/favicon.ico" />
+        <DynamicFavicon />
       </Head>
-      <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
+      <body className="antialiased max-w-2xl mx-4 mt-14 lg:mx-auto">
+        <div className="blur" aria-hidden="true"></div>
         <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
           <Navbar />
           {children}

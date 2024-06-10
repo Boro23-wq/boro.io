@@ -73,7 +73,7 @@ export function BlogPosts({ page }: BlogPostsProps) {
         ))}
     </div>
   ) : (
-    <div className="blurry">
+    <div className="blog-blur">
       {groupedBlogs.map(([year, posts]) => (
         <div key={year}>
           <div className="flex relative">
