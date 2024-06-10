@@ -46,7 +46,7 @@ export default function Page() {
         </div>
 
         {/* experience */}
-        <div className="flex items-center mt-14">
+        <div className="flex items-center mt-10">
           <h4 className="font-medium text-xl tracking-tight mb-2">
             current experience
           </h4>
