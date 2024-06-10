@@ -1,13 +1,10 @@
 "use client";
 
 import { motion, useMotionTemplate, useSpring } from "framer-motion";
-import { useTheme } from "next-themes";
 
 import { PropsWithChildren } from "react";
 
 export const Card: React.FC<PropsWithChildren> = ({ children }) => {
-  const { theme } = useTheme();
-  console.log(theme);
   const mouseX = useSpring(0, { stiffness: 500, damping: 100 });
   const mouseY = useSpring(0, { stiffness: 500, damping: 100 });
 
