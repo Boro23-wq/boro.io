@@ -20,53 +20,55 @@ function ArrowIcon() {
 
 export default function Page() {
   return (
-    <section>
-      {/* intro */}
-      <div className="flex items-center mb-4">
-        <h4 className="heading font-medium text-xl tracking-tight">
-          Elevating experiences.
-        </h4>
-      </div>
-      {`Hey 👋, I'm Sintu Boro. I bring a blend of IT consulting, development, and
+    <>
+      <section>
+        {/* intro */}
+        <div className="flex items-center mb-4">
+          <h4 className="heading font-medium text-xl tracking-tight">
+            Elevating experiences.
+          </h4>
+        </div>
+        {`Hey 👋, I'm Sintu Boro. I bring a blend of IT consulting, development, and
       design expertise. I have transformed complex business processes into
       efficient and user-friendly solutions to help create seamless digital
       experiences. Explore my work and discover how I bridge the gap between
       functionality and user-centered design.`}
 
-      {/* highlight */}
-      <div className="flex items-center mt-8">
-        <h4 className="font-medium text-xl tracking-tight">my highlight</h4>
-      </div>
-      <div className="my-4">
-        <Scroller />
-      </div>
+        {/* highlight */}
+        <div className="flex items-center mt-8">
+          <h4 className="font-medium text-xl tracking-tight">my highlight</h4>
+        </div>
+        <div className="my-4">
+          <Scroller />
+        </div>
 
-      {/* experience */}
-      <div className="flex items-center mt-8">
-        <h4 className="font-medium text-xl tracking-tight">
-          current experience
-        </h4>
-      </div>
-      <div className="pt-4 flex w-full flex-col space-x-0 space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-        {`As a developer/programmer analyst, I specialize in customizing and
+        {/* experience */}
+        <div className="flex items-center mt-8">
+          <h4 className="font-medium text-xl tracking-tight">
+            current experience
+          </h4>
+        </div>
+        <div className="pt-4 flex w-full flex-col space-x-0 space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+          {`As a developer/programmer analyst, I specialize in customizing and
         optimizing software platforms for improved efficiency and user
         experience. I focus on delivering impactful solutions that enhance both
         the functionality and usability of the systems I work with.`}
-      </div>
-      <div className="pt-4 flex w-full flex-col space-x-0 space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-        <p>
-          Currently, working with the{" "}
-          <Link
-            className="transition-all border-b border-neutral-300 dark:border-neutral-600 dark:hover:text-neutral-200 hover:text-neutral-500"
-            href="https://www.beacontechinc.com/"
-            target="_blank"
-          >
-            Beacon Tech
-          </Link>{" "}
-          team as a Programmer Analyst IV for Wisconsin Department of Children
-          and Families (DCF).
-        </p>
-      </div>
-    </section>
+        </div>
+        <div className="pt-4 flex w-full flex-col space-x-0 space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+          <p>
+            Currently, working with the{" "}
+            <Link
+              className="transition-all border-b border-neutral-300 dark:border-neutral-600 dark:hover:text-neutral-200 hover:text-neutral-500"
+              href="https://www.beacontechinc.com/"
+              target="_blank"
+            >
+              Beacon Tech
+            </Link>{" "}
+            team as a Programmer Analyst IV for Wisconsin Department of Children
+            and Families (DCF).
+          </p>
+        </div>
+      </section>
+    </>
   );
 }
