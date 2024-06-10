@@ -198,6 +198,10 @@ blockquote {
   );
 }
 
+.backdrop-blur {
+  @apply backdrop-filter backdrop-saturate-[180%] backdrop-blur-[5px];
+}
+
 @media (max-width: 688px) {
   .scroller {
     --gradient-size-start: 2px;

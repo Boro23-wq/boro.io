@@ -1,5 +1,3 @@
-// import { BlogPosts } from "app/components/posts";
-// import Image from "next/image";
 import Link from "next/link";
 import Scroller from "./components/scroller";
 
@@ -29,7 +27,7 @@ export default function Page() {
           Elevating experiences.
         </h4>
       </div>
-      {`Hi 👋, I'm Sintu Boro. I bring a blend of IT consulting, development, and
+      {`Hey 👋, I'm Sintu Boro. I bring a blend of IT consulting, development, and
       design expertise. I have transformed complex business processes into
       efficient and user-friendly solutions to help create seamless digital
       experiences. Explore my work and discover how I bridge the gap between

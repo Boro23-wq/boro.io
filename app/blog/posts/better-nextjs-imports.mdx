@@ -1,7 +1,7 @@
 ---
 title: Better Next.js Imports
 summary: Improved import statements with absolute paths using babel plugins.
-publishedAt: '2020-03-15'
+publishedAt: "2020-03-15"
 ---
 
 Nine days after first writing this post, the Next.js team [landed support for paths](https://github.com/zeit/next.js/pull/11293) in `tsconfig.json` and `jsconfig.json` by default! In Next.js 9.4 and onwards, you only need to specify a `baseURL` in your config file to support absolute imports:
@@ -38,20 +38,20 @@ Editors like VSCode automatically support the config in `jsconfig.json`, so Comm
 <details>
   <summary>The original post, using a babel plugin.</summary>
 
-<br/>
+<br />
 
 Relative import statements are a pain. To avoid `../` chains, improve code portability, and type less, I've started using [babelplugin-module-resolver](https://github.com/tleunen/babel-plugin-module-resolver) in my Next.js projects.
 
 The goal is to transform verbose import statements like this:
 
 ```js
-import Button from '../../../../components/button'
+import Button from "../../../../components/button";
 ```
 
 into absolute import statements that work anywhere in your project:
 
 ```js
-import Button from '@components/button'
+import Button from "@components/button";
 ```
 
 Let's do it. Install the babel plugin as a `devDependency`:
@@ -64,18 +64,18 @@ In the root of your Next.js project, create a `.babelrc.json` file and add the `
 
 ```js
 module.exports = {
-  presets: ['next/babel'],
+  presets: ["next/babel"],
   plugins: [
     [
-      'module-resolver',
+      "module-resolver",
       {
         alias: {
-          '@components': './components'
-        }
-      }
-    ]
-  ]
-}
+          "@components": "./components",
+        },
+      },
+    ],
+  ],
+};
 ```
 
 Create a `jsconfig.json` (or `tsconfig.json` if you're using TypeScript) and add the `paths` property:

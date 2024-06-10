@@ -21,11 +21,11 @@ export default function Page() {
         <h2 className="font-medium text-xl tracking-tighter mb-0!">
           Beacon Technologies, Inc.
         </h2>
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-col md:flex-row justify-between">
           <p className="my-0 text-sm text-neutral-500! dark:text-neutral-400!">
             IT Consultant/Programmer Analyst IV
           </p>
-          <p className="my-0 text-xs text-neutral-500! dark:text-neutral-400!">
+          <p className="hidden md:block my-0 text-xs text-neutral-500! dark:text-neutral-400!">
             <i>May, 2024 - Current</i>
           </p>
         </div>
@@ -70,11 +70,11 @@ export default function Page() {
         <h2 className="font-medium text-xl tracking-tighter mb-0!">
           Smart Solutions, Inc.
         </h2>
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-col md:flex-row justify-between">
           <p className="my-0 text-sm text-neutral-500! dark:text-neutral-400!">
             IT Consultant/Programmer Analyst IV
           </p>
-          <p className="my-0 text-xs text-neutral-500! dark:text-neutral-400!">
+          <p className="hidden md:block my-0 text-xs text-neutral-500! dark:text-neutral-400!">
             <i>Sep, 2023 - May, 2024</i>
           </p>
         </div>
@@ -108,11 +108,11 @@ export default function Page() {
         <h2 className="font-medium text-xl tracking-tighter mb-0!">
           Wave Drowning Prevention Systems
         </h2>
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-col md:flex-row justify-between">
           <p className="my-0 text-sm text-neutral-500! dark:text-neutral-400!">
             UI/UX Designer and Developer
           </p>
-          <p className="my-0 text-xs text-neutral-500! dark:text-neutral-400!">
+          <p className="hidden md:block my-0 text-xs text-neutral-500! dark:text-neutral-400!">
             <i>May, 2022 - Sep, 2023</i>
           </p>
         </div>
