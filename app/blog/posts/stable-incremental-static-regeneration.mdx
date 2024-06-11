@@ -1,8 +1,8 @@
 ---
 title: Stable Incremental Static Re-generation (Next.js 9.5+).
-publishedAt: '2021-01-06'
+publishedAt: "2021-01-06"
 summary: Next.js has introduced a very handy feature called Incremental Static Re-generation from versions 9.5 and above. Know what the fuss is about!
-# blog: ['/blog/stable-incremental-static-regeneration/cover.png']
+image: "/blog/stable-incremental-static-regeneration/cover.png"
 ---
 
 Next.js has introduced a very handy feature called Incremental Static Re-generation from versions 9.5 and above. It has been five months now since v9.5, nonetheless, I thought the feature was really cool and I had to try it out.
@@ -21,7 +21,9 @@ For every incoming traffic, background regeneration pushes the newly-generated p
 
 Here in the diagram, we can see User-1 requesting data from an endpoint (/post/1). While the request is made, User-1 immediately receives a stale response of the request (already generated data). At the same time, another request is triggered to update the data which subsequently re-generates the page with the updated data.
 
-<img
+<Image
+  width={800}
+  height={800}
   src="/blog/stable-incremental-static-regeneration/image-1.png"
   alt="static-regeneration-image"
 />
@@ -34,9 +36,11 @@ To enable this feature, one has to configure the interval for re-generation in t
 
 The following application demonstrates the feature of Incremental Static Re-generation. It re-generates a static page that shows the count of various GitHub reactions of a Github issue available [here.](https://reactions-demo.now.sh/)
 
-<img
-src="/blog/stable-incremental-static-regeneration/app.gif"
-alt="application-demo"
+<Image
+  width={800}
+  height={800}
+  src="/blog/stable-incremental-static-regeneration/app.gif"
+  alt="application-demo"
 />
 
 The application above is demonstrated in the Next.js blog available [here](https://nextjs.org/blog/next-9-5#stable-incremental-static-regeneration). Please try it out on your own.
@@ -78,15 +82,15 @@ Note: To run this file locally you would need a GitHub access token. Generate on
 The code below handles the response and maps through the reactions available.
 
 ```js
-const json = await res.json()
+const json = await res.json();
 if (res.status !== 200) {
-  console.error(json)
-  throw new Error('Failed to fetch API')
+  console.error(json);
+  throw new Error("Failed to fetch API");
 }
 
 const reactions = json.data.repository.issue.reactionGroups.map(
-  item => item.users.totalCount
-)
+  (item) => item.users.totalCount
+);
 ```
 
 The data received is an array of objects like so. Each of these items is mapped through and the object property called 'totalCount' has the figure stored that indicates the total number of reactions for each emoji.

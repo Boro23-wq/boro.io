@@ -6,7 +6,9 @@ summary: An image recognition pipeline in AWS, using two parallel EC2 instances,
 
 An image recognition pipeline in AWS, using two parallel EC2 instances, S3, SQS, and Rekognition.
 
-<b>Goal</b>: The purpose of this project is to learn how to use the Amazon AWS
+## Goal
+
+The purpose of this project is to learn how to use the Amazon AWS
 cloud platform and to develop an AWS application that uses existing cloud
 services. Specifically, we will learn:
 
@@ -16,7 +18,9 @@ services. Specifically, we will learn:
 4. How to program distributed applications in Java on Linux VMs in the cloud, and,
 5. How to use a machine learning service (AWS Rekognition) in the cloud.
 
-<b>Description</b>: We are building an image recognition pipeline in AWS, using
+## Description
+
+We are building an image recognition pipeline in AWS, using
 two EC2 instances, S3, SQS, and Rekognition. The project is written in Java on
 Amazon Linux VMs. For the rest of the description, you should refer to the
 figure below:
@@ -52,15 +56,22 @@ The following solution was attempted using the AWS account provided by my school
 5. Select <b>vockey</b> as a Key-Pair value which should be pre-populated.
    - Note: You can create your own Key-Pair value with required permissions.
 6. Under Network Settings, select Create security group and check the below settings.
+
    - [x] Allow SSH traffic from
    - [x] Allow HTTPs traffic from the internet
    - [x] Allow HTTP traffic from the internet
    - [x] And instead of <b>Anywhere</b>, select <b>My IP</b> to only send traffic from your IP address.
+
 7. It is recommended to not change settings under <b>Configure storage</b> and <b>Advanced details</b> unless you know what you are doing.
    - <b>Note:</b> You have to follow the above step twice to create two instances.
      My instances are named <b>EC2-A</b> and <b>EC2-B</b> and looks like this:
 
-![Running EC2 instances](https://raw.githubusercontent.com/Boro23-wq/AWS-Image-Recognition-Pipeline/master/assets/running-ec2-instances.png)
+<Image
+  src="/blog/image-rec-pipeline/running-ec2-instances.png"
+  alt="running ec-2 instances"
+  width={800}
+  height={800}
+/>
 
 ### Add IAM roles to the created instances:
 
@@ -78,11 +89,12 @@ The following solution was attempted using the AWS account provided by my school
 1. We will have two different programs, one is to recognize <u>Object</u> and the other is to recognize <b>Text</b> Please read the project description to understand why we need two programs.
 2. The object detection program will run on the first instance while the second instance will run the text detection program.
 3. Please make sure you have the executable JAR files for each of the programs, as we will upload the JAR files in the instances.
+
    > In simple words, a _JAR file_ is a file that contains a compressed version of .class files, audio files, image files, or directories.
+
 4. Once you have the JAR files ready you can upload it to the respective EC2 instances using <b>Cyberduck</b> (Mac) or <b>WinSCP</b> (Windows). I am using Cyberduck for the project since I'm working with a Mac system.
    - If you want to learn how to upload file in EC2 instance using Cyberduck, follow the link - [FTP into your EC2-instance with Cyberduck](http://www.brianhoshi.com/blog/how-to-ftp-into-your-ec2-instance-with-cyberduck/)
-   - <b>Note</b> The username while you FTP to your EC2 instance using Cyberduck
-     should be 'ec2-user'.
+   - The username while you FTP to your EC2 instance using Cyberduck should be <b>ec2-user</b>
 
 ## SSH Access from a Mac:
 
@@ -113,7 +125,12 @@ We will now SSH from Mac to access both our EC2 instances.
 
 Once we SSH to the two EC2 instances we will have something like this:
 
-![SSH access to EC2 instances](https://raw.githubusercontent.com/Boro23-wq/AWS-Image-Recognition-Pipeline/master/assets/ssh-to-ec2-instances.png)
+<Image
+  src="/blog/image-rec-pipeline/ssh-to-ec2-instances.png"
+  alt="ssh to ec-2 instance"
+  width={800}
+  height={800}
+/>
 
 ## Run the programs on respective EC2 instance:
 
@@ -128,21 +145,56 @@ Once we SSH to the two EC2 instances we will have something like this:
 ### Running program on EC2-A instance (First EC2 instance):
 
 1. Once you run the AWSObjectDetection.jar on EC2-A instance the images that satisfies the condition will be pushed to the SQS (Queue).
-   ![Item 5 pushed to queue](https://raw.githubusercontent.com/Boro23-wq/AWS-Image-Recognition-Pipeline/master/assets/msgs-push-to-sqs-3.png)
-   ![Item 6  pushed to queue](https://raw.githubusercontent.com/Boro23-wq/AWS-Image-Recognition-Pipeline/master/assets/msgs-push-to-sqs-2.png)
-   ![Item 7 pushed to queue](https://raw.githubusercontent.com/Boro23-wq/AWS-Image-Recognition-Pipeline/master/assets/msgs-push-to-sqs-1.png)
+   <Image
+     src="/blog/image-rec-pipeline/msgs-push-to-sqs-3.png"
+     alt="Item 5 pushed to queue"
+     width={800}
+     height={800}
+   />
+   <Image
+     src="/blog/image-rec-pipeline/msgs-push-to-sqs-2.png"
+     alt="Item 6 pushed to queue"
+     width={800}
+     height={800}
+   />
+   <Image
+     src="/blog/image-rec-pipeline/msgs-push-to-sqs-1.png"
+     alt="Item 7 pushed to queue"
+     width={800}
+     height={800}
+   />
 2. We have 6 items that are pushed to the queue, since only 6 items satisfies the condition ( Label = "Car" and Confidence > 90).
 3. The queue is created like so:
-   ![Queue creation](https://raw.githubusercontent.com/Boro23-wq/AWS-Image-Recognition-Pipeline/master/assets/queue-creation.png)
+   <Image
+     src="/blog/image-rec-pipeline/queue-creation.png"
+     alt="queue creation"
+     width={800}
+     height={800}
+   />
 4. And the contents of the queues can be obtained by long polling:
-   ![Queue content](https://raw.githubusercontent.com/Boro23-wq/AWS-Image-Recognition-Pipeline/master/assets/content-inside-queue.png)
+   <Image
+     src="/blog/image-rec-pipeline/content-inside-queue.png"
+     alt="content inside queue"
+     width={800}
+     height={800}
+   />
 
 Once we populate the queues we can see how does it look when we run the AWSTextRekognition program on EC2-B instance.
 
 ### Running program on EC2-B instance (Second EC2 instance):
 
 1. We run the AWSTextRekognition.jar on EC2-B instance like so:
-   ![Snapshot of pogram running on EC2-B instance](https://raw.githubusercontent.com/Boro23-wq/AWS-Image-Recognition-Pipeline/master/assets/cmd-to-run-program-ec2-b.png)
+   <Image
+     src="/blog/image-rec-pipeline/cmd-to-run-program-ec2-b.png"
+     alt="Snapshot of pogram running on EC2-B instance"
+     width={800}
+     height={800}
+   />
 2. When instance B finishes, it prints to a file (output.txt), the indexes of the images that have both cars and text, and also prints the actual text in each image next to its index.
 3. The final output stored in output.txt looks like this:
-   ![Final output](https://raw.githubusercontent.com/Boro23-wq/AWS-Image-Recognition-Pipeline/master/assets/final-output.png)
+   <Image
+     src="/blog/image-rec-pipeline/final-output.png"
+     alt="Final output"
+     width={800}
+     height={800}
+   />

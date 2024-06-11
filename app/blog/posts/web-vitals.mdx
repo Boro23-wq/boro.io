@@ -1,10 +1,15 @@
 ---
 title: Core Web Vitals can remediate your website's bad user experience.
-publishedAt: '2021-02-15'
+publishedAt: "2021-02-15"
 summary: Core Web Vitals uses metrices like Largest Contentful Paint, First Input Delay and Cumulative Layout Shift to determine the overall user-experience of your website.
 ---
 
-<img src="/blog/web-vitals/web-vitals-1.png" alt="web-vitals-1" />
+<Image
+  width={800}
+  height={800}
+  src="/blog/web-vitals/web-vitals-1.png"
+  alt="web-vitals-1"
+/>
 
 We all want to create beautiful layouts, add exquisite animations, and want to deliver a top-notch user interface but let me be honest, how many of us are really aware of the web vitals that can help deliver a blazingly fast user-experience. In short, Google uses these web vitals to provide quality standards on user experiences.
 
@@ -18,23 +23,33 @@ Taking care of the modest details will surely take you a long way. In fact, it i
 
 Core Web Vitals primarily encompasses three specific measurements: Largest Contentful Paint (visibility), First Input Delay (interactivity), and Cumulative Layout Shift (stability).
 
-<img src="/blog/web-vitals/web-vitals-2.png" alt="web-vitals-2" />
+<Image
+  width={800}
+  height={800}
+  src="/blog/web-vitals/web-vitals-2.png"
+  alt="web-vitals-2"
+/>
 
 Let us go through each of them and understand what they really mean.
 
-- <u>Largest Contentful Paint (LCP)</u>: It measures how fast your website loads. Anything below
-  2.5s is deemed a good score.
-- <u>First Input Delay (FID)</u>: It measures how long a user has to wait before they can interact
-  with your website. Anything below 100ms is a good FID score.
-- <u>Cumulative Layout Shift (CLS)</u>: It measures the visual stability of a website. It mainly
-  occurs due when an asynchronous event fires and inserts DOM elements on the fly on top of existing
-  content.
+- <u>Largest Contentful Paint (LCP)</u>: It measures how fast your website
+  loads. Anything below 2.5s is deemed a good score.
+- <u>First Input Delay (FID)</u>: It measures how long a user has to wait before
+  they can interact with your website. Anything below 100ms is a good FID score.
+- <u>Cumulative Layout Shift (CLS)</u>: It measures the visual stability of a
+  website. It mainly occurs due when an asynchronous event fires and inserts DOM
+  elements on the fly on top of existing content.
 
 ## Tools to measure Core Web Vitals.
 
 There are a handful of developer tools that support Core Web Vitals. Below I have put up a picture just to display a few. You can make use of the tools to generate the Web Vitals score report and see how far you need to optimize your website.
 
-<img src="/blog/web-vitals/web-vitals-3.png" alt="web-vitals-3" />
+<Image
+  width={800}
+  height={800}
+  src="/blog/web-vitals/web-vitals-3.png"
+  alt="web-vitals-3"
+/>
 
 There is a really descriptive workflow described in the [web.dev blog](https://web.dev/vitals-tools/) that talks about how we can use all of the tools above to optimize the Core Web Vitals for a website. If you have some time and want to understand it better I would highly suggest you follow the link above. If not, let me write down the essence for you quickly.
 
@@ -52,13 +67,23 @@ To get started let us go ahead and see PageSpeed Insights' typical report that r
 
 Once you have the URL of the site you want to generate the report for go ahead and click analyze. It might take a few seconds before you see something like this:
 
-<img src="/blog/web-vitals/web-vitals-4.png" alt="web-vitals-score" />
+<Image
+  width={800}
+  height={800}
+  src="/blog/web-vitals/web-vitals-4.png"
+  alt="web-vitals-score"
+/>
 
 As you can see the result is based on the real-world field data and says if the page passes the Core Web Vitals assessment or not. The report records four different web vitals. They are First Contentful Paint (FCP), First Input Delay (FID), Largest Contentful Paint (LCP), and Cumulative Layout Shift (CLS). You can also view suggestions based on each page by analyzing individual page URLs. Suppose you want to generate a report for the About page of your portfolio, you can go ahead and check the About page (www.portfolio.com/about) and record its scores.
 
 Additionally, you also receive a Lab score which essentially means that the scores are based on assumptions of user data. The lab score would look something like this:
 
-<img src="/blog/web-vitals/web-vitals-5.png" alt="web-vitals-score" />
+<Image
+  width={800}
+  height={800}
+  src="/blog/web-vitals/web-vitals-5.png"
+  alt="web-vitals-score"
+/>
 
 Lab score comes along with a brief description of what these scores are and helps you visualize where you might need some digging. These scores are very helpful for testing your website and can help you to perform iterative optimizations along the way.
 
@@ -66,7 +91,12 @@ Lab score comes along with a brief description of what these scores are and help
 
 What if the web vitals score for your site isn't too great the first time around. You don't have to worry about not knowing where the problem in your site might be. In fact, PageSpeed Insights helps you with a diagnostic section that can perhaps act as a guide or a starting point. As you can see in the picture below, I have drawn out in red boxes to highlight places where PageSpeed Insights wants you to dig in and resolve some of these issues with your site.
 
-<img src="/blog/web-vitals/web-vitals-6.png" alt="web-vitals-diagnostics" />
+<Image
+  width={800}
+  height={800}
+  src="/blog/web-vitals/web-vitals-6.png"
+  alt="web-vitals-diagnostics"
+/>
 
 These highlights are pretty helpful as you can now deal with solving the specific problem right away than just being baffled and not knowing where things are unsettled. Every diagnosis will also have a "Learn More" section that you can follow to learn how to tackle the specific problem.
 

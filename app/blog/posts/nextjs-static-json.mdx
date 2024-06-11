@@ -1,8 +1,8 @@
 ---
 title: Next.js (useStaticProps, useStaticPaths) + Static JSON Data.
-publishedAt: '2020-12-12'
+publishedAt: "2020-12-12"
 summary: There are multiple different ways (useStaticProps, useStaticPaths, useServerSideProps) to fetch data in Next.js. Let's build an application using the different methods.
-# blog: ['/blog/nextjs-static-json/cover.png']
+image: "/blog/nextjs-static-json/cover.png"
 ---
 
 I have been trying to learn Next.js for a few weeks now. I have read a few blogs and have found Next.js very intriguing in terms of its added functionality such as server-side rendering and generating static websites. To be honest, I have already started liking it enough and wanted to build a quick application using Next.js' data fetching techniques. Shoutout to [Lee Robinson](https://leerob.io/) for his amazing [blog](https://leerob.io/blog/next-prisma) on incorporating Next.js with Prisma.
@@ -66,18 +66,18 @@ For Example: If we have an about page, we create a file called about.js inside t
 We will have an index.js file that will act as an entry point to our application. The file will have the following content:
 
 ```js
-import { playlist } from '../data'
-import { List, Heading } from '@chakra-ui/core'
+import { playlist } from "../data";
+import { List, Heading } from "@chakra-ui/core";
 
-import Song from '../components/Song'
+import Song from "../components/Song";
 
 export const getStaticProps = async () => {
   return {
     props: {
-      playlistLists: playlist
-    }
-  }
-}
+      playlistLists: playlist,
+    },
+  };
+};
 
 export default ({ playlistLists }) => (
   <>
@@ -85,12 +85,12 @@ export default ({ playlistLists }) => (
       HipHop Playlist
     </Heading>
     <List>
-      {playlistLists.map(playlistList => (
+      {playlistLists.map((playlistList) => (
         <Song key={playlistList.id} {...playlistList} />
       ))}
     </List>
   </>
-)
+);
 ```
 
 Here we import the playlist array from the data file that we created before. Notice we make use of a function called 'getStaticProps' in the file above. Let us break down what's happening here.
@@ -103,10 +103,10 @@ Here we import the playlist array from the data file that we created before. Not
 export const getStaticProps = async () => {
   return {
     props: {
-      playlistLists: playlist
-    }
-  }
-}
+      playlistLists: playlist,
+    },
+  };
+};
 ```
 
 Notice we pass in the data from our playlist array, as 'playlistLists'. Now these 'playlistLists' props will expose our data to the below component.
@@ -118,12 +118,12 @@ export default ({ playlistLists }) => (
       HipHop Playlist
     </Heading>
     <List>
-      {playlistLists.map(playlistList => (
+      {playlistLists.map((playlistList) => (
         <Song key={playlistList.id} {...playlistList} />
       ))}
     </List>
   </>
-)
+);
 ```
 
 The component above receives the props 'playlistLists' which was made available to us by the 'useStaticProps' method. Using the help of the props and since we have an array defined within our data, we can map through each song in the playlist and pass the props through to another component called 'Song'.
@@ -131,8 +131,8 @@ The component above receives the props 'playlistLists' which was made available 
 The Song component is actually responsible for rendering our list in the view. The Song component looks something like this:
 
 ```js
-import { ListItem, Image, Flex, Text, Stack, Heading } from '@chakra-ui/core'
-import NextLink from 'next/link'
+import { ListItem, Image, Flex, Text, Stack, Heading } from "@chakra-ui/core";
+import NextLink from "next/link";
 
 const Song = ({ id, name, artist, albumCoverUrl }) => (
   <ListItem
@@ -162,9 +162,9 @@ const Song = ({ id, name, artist, albumCoverUrl }) => (
       </Flex>
     </NextLink>
   </ListItem>
-)
+);
 
-export default Song
+export default Song;
 ```
 
 Here, a lot of the code is concentrated on styling. There's not much logic going on here. And by the way, we use a library called Chakra for the UI components.
@@ -173,7 +173,12 @@ Here, a lot of the code is concentrated on styling. There's not much logic going
 
 The demo of the rendered view can be seen below:
 
-<img src="/blog/nextjs-static-json/app-1.png" alt="app-screen-1" />
+<Image
+  width={800}
+  height={800}
+  src="/blog/nextjs-static-json/app-1.png"
+  alt="app-screen-1"
+/>
 
 We now have a rendered view of our application. But what if we want to click on each of these list items and want to render a view for each of the individual songs in the playlist with a video embedded from Youtube.
 
@@ -186,26 +191,26 @@ Next.js can help us create pages with dynamic routes. For example, if we want to
 Now let us create a file `[id].js` inside the folder called songs. The file will have the following content:
 
 ```js
-import { playlist } from '../../data'
-import { Box, Heading, Text, Button } from '@chakra-ui/core'
-import NextLink from 'next/link'
+import { playlist } from "../../data";
+import { Box, Heading, Text, Button } from "@chakra-ui/core";
+import NextLink from "next/link";
 
 export const getStaticProps = async ({ params }) => {
-  const playlistList = playlist.filter(p => p.id.toString() === params.id)
+  const playlistList = playlist.filter((p) => p.id.toString() === params.id);
   return {
     props: {
-      song: playlistList[0]
-    }
-  }
-}
+      song: playlistList[0],
+    },
+  };
+};
 
 export const getStaticPaths = async () => {
-  const paths = playlist.map(song => ({
-    params: { id: song.id.toString() }
-  }))
+  const paths = playlist.map((song) => ({
+    params: { id: song.id.toString() },
+  }));
 
-  return { paths, fallback: false }
-}
+  return { paths, fallback: false };
+};
 
 export default ({ song }) => (
   <Box mt={8}>
@@ -227,7 +232,7 @@ export default ({ song }) => (
       </Button>
     </NextLink>
   </Box>
-)
+);
 ```
 
 Here the 'getStaticPaths' method will help us generate a dynamic route for each song in the playlist based on the query params. Suppose you visit the route '/songs/1', Next.js will create us a dynamic route for the song with `id=1` as we receive in the query.
@@ -236,13 +241,13 @@ The id received is then passed to the 'getStaticProps' method:
 
 ```js
 export const getStaticProps = async ({ params }) => {
-  const playlistList = playlist.filter(p => p.id.toString() === params.id)
+  const playlistList = playlist.filter((p) => p.id.toString() === params.id);
   return {
     props: {
-      song: playlistList[0]
-    }
-  }
-}
+      song: playlistList[0],
+    },
+  };
+};
 ```
 
 Here we filter the id in our data file that matches the query params. And then finally return the single song as a prop to our components. The component below can now render the view using the props like so:
@@ -268,12 +273,17 @@ export default ({ song }) => (
       </Button>
     </NextLink>
   </Box>
-)
+);
 ```
 
 The rendered view of the above file is demonstrated below:
 
-<img src="/blog/nextjs-static-json/app-2.gif" alt="application-demo" />
+<Image
+  width={800}
+  height={800}
+  src="/blog/nextjs-static-json/app-2.gif"
+  alt="application-demo"
+/>
 
 ## Conclusion
 

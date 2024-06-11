@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
-* {
+/* * {
   scrollbar-width: thin;
   scrollbar-color: var(--mono5) transparent;
-}
+} */
 
 ::selection {
   background-color: #47a3f3;
@@ -12,6 +12,7 @@
 
 :root {
   /* palette */
+  --gray2: #eaeaea;
   --gray5: #2e2e2e;
 
   /* code formatiting */
@@ -26,6 +27,7 @@
   --sh-entity: #e25a1c;
 
   /* color */
+  --mono2: var(--gray2);
   --mono5: var(--gray5);
 }
 
@@ -41,6 +43,17 @@
     color-scheme: dark;
     color: #d4d4d4;
     background-color: #1a1a1a;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--mono5) transparent;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--mono2) transparent;
   }
 }
 
@@ -91,7 +104,7 @@ body {
 }
 
 .prose code {
-  @apply px-2 py-1 bg-neutral-800 rounded-md text-sm font-normal;
+  @apply px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded-md text-[12.5px] font-normal;
 }
 
 .prose pre code {
@@ -110,6 +123,10 @@ body {
 
 .prose p {
   @apply mt-0 mb-4 text-neutral-800 dark:text-neutral-300;
+}
+
+.prose u {
+  @apply decoration-neutral-200 dark:decoration-neutral-600 underline underline-offset-2;
 }
 
 .prose h1 {
@@ -136,6 +153,10 @@ body {
   @apply list-disc pl-6;
 }
 
+.prose ul.contains-task-list li.task-list-item {
+  list-style-type: none;
+}
+
 .prose li {
   @apply my-2 text-neutral-800 dark:text-neutral-300;
 }
@@ -145,11 +166,11 @@ body {
 }
 
 .prose th {
-  @apply text-left pb-2 border-b border-gray-200 dark:border-gray-600;
+  @apply text-left pb-2 border-b border-neutral-200 dark:border-neutral-700;
 }
 
 .prose td {
-  @apply py-1 pr-4;
+  @apply text-left py-1 pr-4;
 }
 
 .prose > :first-child {
@@ -197,7 +218,7 @@ table {
 }
 
 blockquote {
-  @apply italic;
+  @apply italic border-l-4 ml-4 pl-4 dark:border-neutral-600 border-neutral-200;
 }
 
 .scroller {

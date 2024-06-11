@@ -64,36 +64,12 @@ Static-site generation generates the pages during build time. Basically, a site 
 
 ## Usecases of CSR, SSR, and SSG
 
-<table>
-  <tr>
-    <th>CSR</th>
-    <th>SSR</th>
-    <th>SSG</th>
-  </tr>
-  <tr>
-    <td>Authenticated pages or paywall/private dashboard pages.</td>
-    <td>Can be used with pages that require a heavy workload.</td>
-    <td>Documentation pages where data is not frequently updated.</td>
-  </tr>
-  <tr>
-    <td>
-      Pages with frequent data updates. For eg. Pages with real-time data
-      updates.
-    </td>
-    <td>Websites that require link previews.</td>
-    <td>Blog sites.</td>
-  </tr>
-  <tr>
-    <td>Banking websites where data is requested on-demand.</td>
-    <td>Websites with lots of pages (only render on request).</td>
-    <td>Great for isomorphic applications/websites.</td>
-  </tr>
-  <tr>
-    <td>Pages that don&#39;t require SEO optimizations.</td>
-    <td>Pages that do require SEO optimizations.</td>
-    <td>Pages that do require SEO optimizations.</td>
-  </tr>
-</table>
+| CSR                                                                          |                          SSR                          |                                                       SSG |
+| ---------------------------------------------------------------------------- | :---------------------------------------------------: | --------------------------------------------------------: |
+| Authenticated pages or paywall/private dashboard pages.                      | Can be used with pages that require a heavy workload. | Documentation pages where data is not frequently updated. |
+| Pages with frequent data updates. For eg. Pages with real-time data updates. |         Websites that require link previews.          |                                               Blog sites. |
+| Banking websites where data is requested on-demand.                          | Websites with lots of pages (only render on request). |               Great for isomorphic applications/websites. |
+| Pages that don't require SEO optimizations.                                  |       Pages that do require SEO optimizations.        |                  Pages that do require SEO optimizations. |
 
 ## Demo
 

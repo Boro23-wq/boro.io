@@ -1,13 +1,18 @@
 ---
 title: Accessibility and SEO optimizations in Next.js application (Lighthouse).
-publishedAt: '2021-01-04'
+publishedAt: "2021-01-04"
 summary: An application demonstrating simple tweaks to boost SEO and Accessibility the right way!
-# blog: ['/blog/seo-optimizations/cover.png']
+image: "/blog/seo-optimizations/cover.png"
 ---
 
 Today, we have a fairly simple task of optimizing the SEO of an even fairly simple Next.js app. We will produce reports from lighthouse before and after the optimizations to make sure we understand the optimizations in each step of the way.
 
-<img src="/blog/seo-optimizations/liverpool.png" alt="liverpool" />
+<Image
+  width={800}
+  height={800}
+  src="/blog/seo-optimizations/liverpool.png"
+  alt="liverpool"
+/>
 
 The application is only a couple lines of code with an h2 and an image tag. The crux of this tutorial is not to try anything complex but to optimize the SEO of a simple yet purposeful application. By the end of this tutorial, we will clearly understand the necessary steps that we need to take along the way to improve SEO and accessibility.
 
@@ -15,11 +20,21 @@ The application is only a couple lines of code with an h2 and an image tag. The 
 
 If you don't already know where to find the lighthouse interface, I have attached a little image that can help you find it to get started with lighthouse.
 
-<img src="/blog/seo-optimizations/lighthouse-report.png" alt="lighthouse" />
+<Image
+  width={800}
+  height={800}
+  src="/blog/seo-optimizations/lighthouse-report.png"
+  alt="lighthouse"
+/>
 
 Make sure you check the SEO and Accessibility options since we are only dealing with SEO in this tutorial. Make sure you uncheck any other options. Hit the Generate report button to see where your SEO ranks.
 
-<img src="/blog/seo-optimizations/lighthouse-report.png" alt="report-1" />
+<Image
+  width={800}
+  height={800}
+  src="/blog/seo-optimizations/lighthouse-report.png"
+  alt="report-1"
+/>
 
 I have already done that for myself, and as you can see the Accessibility and SEO of our app is average. Not too good and not too bad. But let us try to improve further and see how well we do.
 
@@ -33,7 +48,12 @@ Also when lighthouse generates a report, it also provides you with additional in
 - Image element doesn't have an `alt` tag.
 - html element doesn't have a `lang` attribute.
 
-<img src="/blog/seo-optimizations/account-report.png" alt="acc-report" />
+<Image
+  width={800}
+  height={800}
+  src="/blog/seo-optimizations/account-report.png"
+  alt="acc-report"
+/>
 
 ### SEO Scores
 
@@ -41,7 +61,12 @@ Also when lighthouse generates a report, it also provides you with additional in
 - Document doesn't have a meta description.
 - Image element doesn't have an `alt` tag.
 
-<img src="/blog/seo-optimizations/seoreport.png" alt="seo-report" />
+<Image
+  width={800}
+  height={800}
+  src="/blog/seo-optimizations/seoreport.png"
+  alt="seo-report"
+/>
 
 # Step towards optimization
 
@@ -54,7 +79,7 @@ export default function Home() {
       <h2>Liverpool Football Club </h2>
       <Image src="/anfield.jpg" width="800" height="600" />
     </div>
-  )
+  );
 }
 ```
 
@@ -72,7 +97,7 @@ export default function Home() {
         height="600"
       />
     </main>
-  )
+  );
 }
 ```
 
@@ -94,14 +119,14 @@ export default function Home() {
         height="600"
       />
     </main>
-  )
+  );
 }
 ```
 
 But to overwrite those tags there's certainly a work-around. The way we can achieve this in Next is to import a package like so.
 
 ```js {1,6-8}
-import Head from 'next/head'
+import Head from "next/head";
 
 export default function Home() {
   return (
@@ -118,7 +143,7 @@ export default function Home() {
         height="600"
       />
     </main>
-  )
+  );
 }
 ```
 
@@ -142,7 +167,7 @@ export default function Home() {
       </Head>
       ...
     </main>
-  )
+  );
 }
 ```
 
@@ -175,7 +200,7 @@ class MyDocument extends Document {
           <NextScript />
         </body>
       </Html>
-    )
+    );
   }
 }
 ```
@@ -204,7 +229,12 @@ The following lines are removed from index.js (marked by x).
 
 Voila! There we have our final report from Lighthouse. The nitty-gritty optimizations were certainly handy and the SEO and Accessibility ranks were bumped up to a maximum of 100.
 
-<img src="/blog/seo-optimizations/final-seo-report.png" alt="final-report" />
+<Image
+  width={800}
+  height={800}
+  src="/blog/seo-optimizations/final-seo-report.png"
+  alt="final-report"
+/>
 
 By utilizing these simple SEO practices, we can immensely improve the visibility of our website to help the site gain better ranks and position on the search engine results page(SERP).
 

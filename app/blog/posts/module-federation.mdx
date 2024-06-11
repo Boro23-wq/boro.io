@@ -1,11 +1,11 @@
 ---
 title: Module Federation in Next.js (Available as a Webpack plugin)
-publishedAt: '2021-10-02'
+publishedAt: "2021-10-02"
 summary: Module federation allows sharing of isolated builds between applications at runtime. It is also available as a webpack v5 plugin.
 # images: ['/blog/mod-fed/banner.png']
 ---
 
-# What is Module Federation?
+## What is Module Federation?
 
 Module Federation is a Javascript architecture of using reusable components between multiple applications. I might have just made it sound effortless, but it indeed is very simple jargon. As we are all aware of sharing components within a React application, Module Federation is essentially doing the same thing under the hood, except it exposes modules within an application to be consumed by a different application dynamically.
 
@@ -17,27 +17,28 @@ Before we try out Module Federation in two different Next.js applications and bo
 
 Very simply, micro-frontend allows multiple development teams to work on the same front-end application. The decomposed "micro-apps" can be maintained separately as they are de-coupled, which also means that they can be developed and deployed independently.
 
-# Some more information
+## Some more information
 
 There are couple of terms that we need to define before we can move further ahead.
 
-- <u>Host</u>: A host is a build/module initialized first during a page load. A host can be termed as
-  a provider.
-- <u>Remote</u>: A remote is another build that consumes some part of the host. They can also be referred
-  to as consumers.
+- <u>Host</u>: A host is a build/module initialized first during a page load. A
+  host can be termed as a provider.
+- <u>Remote</u>: A remote is another build that consumes some part of the host.
+  They can also be referred to as consumers.
 
-<u>Note:</u> All applications can be both remote and host, providers, and consumers of any other federated module in the system.
+<u>Note:</u> All applications can be both remote and host, providers, and consumers
+of any other federated module in the system.
 
 Furthermore, we need to know another concept of overriding modules. For example, if you're importing a React component that ships along with the entire React code, the local build won't download the React code again, instead it will overwrite the React code and only import the essential component code. This helps the local build to avoid downloading the already existing dependencies.
 
-# Why Module Federation?
+## Why Module Federation?
 
 - All we had in a while were externals and DLLs (Dynamic Link Libraries) to share functionalities between applications. All of which made code sharing very hard and difficult to scale.
 - Inconvenience - When two independent applications critically share critical code they needed to be adaptive and dynamic.
 - NPM is slow.
 - Module Federation was designed so that standalone applications could entirely be in their own repository, deployed independently, and run as its own independent SPA.
 
-# Let us try out Module Federation
+## Let us try out Module Federation
 
 We are going to have two different Next.js applications for the demonstration. One of which will be a provider or a build that exposes modules to be consumed and the other one would import a component from the consumable build. Just to give you a background if you haven't already used Next.js, Next.js is essentially a React front-end framework that provides tons of new features like Server-side rendering and Static Site Generation on top of the React ecosystem.
 
@@ -92,34 +93,34 @@ Go ahead and paste the code below inside the `next.config.js` file. All this con
 ```jsx title=next.config.js highlight=15
 const {
   withModuleFederation,
-  MergeRuntime
-} = require('@module-federation/nextjs-mf')
-const path = require('path')
+  MergeRuntime,
+} = require("@module-federation/nextjs-mf");
+const path = require("path");
 
 module.exports = {
   webpack: (config, options) => {
-    const { buildId, dev, isServer, defaultLoaders, webpack } = options
+    const { buildId, dev, isServer, defaultLoaders, webpack } = options;
     const mfConf = {
-      name: 'home',
-      library: { type: config.output.libraryTarget, name: 'home' },
-      filename: 'static/runtime/remoteEntry.js',
+      name: "home",
+      library: { type: config.output.libraryTarget, name: "home" },
+      filename: "static/runtime/remoteEntry.js",
       remotes: {},
       exposes: {},
-      shared: []
-    }
+      shared: [],
+    };
 
     // Configures ModuleFederation and other Webpack properties
-    withModuleFederation(config, options, mfConf)
+    withModuleFederation(config, options, mfConf);
 
-    config.plugins.push(new MergeRuntime())
+    config.plugins.push(new MergeRuntime());
 
     if (!isServer) {
-      config.output.publicPath = 'http://localhost:3000/_next/'
+      config.output.publicPath = "http://localhost:3000/_next/";
     }
 
-    return config
-  }
-}
+    return config;
+  },
+};
 ```
 
 After we are done with the config file, we now need to include a custom document that will help us override the default settings of our Next.js application. The way we do that in the Next.js application is to create a `_document.js` file inside the pages directory of our Home application.
@@ -127,13 +128,13 @@ After we are done with the config file, we now need to include a custom document
 Copy the code below into the `_document.js` file. The file will enable `patchSharing()` which will help us share some part of the code with some other application.
 
 ```jsx title=_document.js highlight=13
-import Document, { Html, Head, Main, NextScript } from 'next/document'
-import { patchSharing } from '@module-federation/nextjs-mf'
+import Document, { Html, Head, Main, NextScript } from "next/document";
+import { patchSharing } from "@module-federation/nextjs-mf";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
-    const initialProps = await Document.getInitialProps(ctx)
-    return { ...initialProps }
+    const initialProps = await Document.getInitialProps(ctx);
+    return { ...initialProps };
   }
 
   render() {
@@ -146,11 +147,11 @@ class MyDocument extends Document {
           <NextScript />
         </body>
       </Html>
-    )
+    );
   }
 }
 
-export default MyDocument
+export default MyDocument;
 ```
 
 Now the next step is to actually create the component that we will share with another application. Inside the home directory create a new folder called components and include a file called `Header.jsx` inside of it. The Header component will have a colored div and some text inside it. It wouldn't be an extra-ordinarily fancy component but one that serves the purpose.
@@ -161,28 +162,28 @@ Now go ahead and copy the following code inside the Header component that we jus
 const Header = () => (
   <div
     style={{
-      backgroundColor: '#80cac3',
-      color: 'white',
-      width: '800px',
-      borderRadius: '20px',
-      marginBottom: '10px',
-      padding: '1em',
-      textAlign: 'center'
+      backgroundColor: "#80cac3",
+      color: "white",
+      width: "800px",
+      borderRadius: "20px",
+      marginBottom: "10px",
+      padding: "1em",
+      textAlign: "center",
     }}
   >
     <h1>Module Federation is Awesome!</h1>
   </div>
-)
+);
 
-export default Header
+export default Header;
 ```
 
 The only way to show up this component on our application is to import it inside the index.js file which is the entry point of our Next.js application. Go ahead and import the component like so:
 
 ```js title=index.js
-import Head from 'next/head'
+import Head from "next/head";
 
-const Header = (await import('home/Header')).default
+const Header = (await import("home/Header")).default;
 
 const Home = () => (
   <div className="container">
@@ -203,7 +204,7 @@ const Home = () => (
       ...
     </footer>
   </div>
-)
+);
 ```
 
 We have one more step before we can create our second application. We need to export the `Header.jsx` component inside the "exposes" object that we defined earlier inside the `next.config.js` file.
@@ -255,7 +256,7 @@ module.exports = {
 Notice you will also have a `_document.js` inside the pages directory. Uncomment the script tag within the render method. The script tag is a special entry point (a few KB's in size). They contain a special webpack runtime that can interface with the host (or home in our case).
 
 ```jsx title=index.js highlight=10
-const Header = (await import('home/Header')).default
+const Header = (await import("home/Header")).default;
 
 const Home = () => (
   <div className="container">
@@ -271,7 +272,7 @@ const Home = () => (
     </main>
     {/* ... ... ... */}
   </div>
-)
+);
 ```
 
 In the index file of our remote app, we now import the Header component and render it within the second application. You now need to run both the development servers and there you go you now have a Next.js application (home) that exposes a consumable component which is then consumed by the second Next.js application (remote). I've put up a snapshot of both the applications below for you to demonstrate what we will have after following all the steps above.
@@ -280,7 +281,7 @@ In the index file of our remote app, we now import the Header component and rend
 
 Any changes to the home application will now reflect it back on the remote application. How cool is that? That is Module Federation for you.
 
-# Conclusion
+## Conclusion
 
 Module Federation has some great features like avoiding dependency duplication (built-in redundancy). Since remote builds are dependent on hosts, if the host does not ship dependencies that the remote requires, the remote can download the missing dependencies on its own. Module Federation being started out as a Javascript architecture was moved on to support as a Webpack plugin. It certainly changes the scene of building scalable applications using micro-frontends. There are tons of in-depth blogs about Module Federation. If you are rather interested on watching a video I would suggest you to go ahead and watch [Jack Herrington's](https://www.youtube.com/channel/UC6vRUjYqDuoUsYsku86Lrsw) Youtube on Federated Modules in Webpack 5. The link will be attached below. Additionaly, if you want to read in-depth about Module Federation I would highly recommend you to visit the links below.
 

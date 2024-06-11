@@ -1,6 +1,6 @@
 ---
 title: Write a custom reusable Hook (useFetch).
-publishedAt: '2020-09-17'
+publishedAt: "2020-09-17"
 summary: Demonstrating how to build a custom reusable Hook 'useFetch' for React application.
 ---
 
@@ -43,7 +43,8 @@ src / App.js
 
 You might have more files than this. In case you do, go ahead and delete those files as we will no longer need them for this application.
 
-<u>Note</u>: I have only highlighted the src folder since we will only be working inside this directory.
+<u>Note</u>: I have only highlighted the src folder since we will only be
+working inside this directory.
 
 Now that we have the basic structure ready, we can keep going.
 
@@ -59,7 +60,8 @@ Now inside components directory, go ahead and create three different directories
 
 Inside card, user and post directories create the files card.component.jsx, user.component.jsx and post.component.jsx respectively.
 
-<u>Note</u>: The card directory will have a card.css file for styling the card container.
+<u>Note</u>: The card directory will have a card.css file for styling the card
+container.
 
 The folder structure will look something like this after creating all the files:
 
@@ -80,17 +82,16 @@ The folder structure will look something like this after creating all the files:
 The card component essentially holds the User and the Post data.
 
 ```js
-import React from 'react'
+import React from "react";
 
-import './card.css'
+import "./card.css";
 
-const Card = ({ children }) => <div className="card">{children}</div>
+const Card = ({ children }) => <div className="card">{children}</div>;
 
-export default Card
+export default Card;
 ```
 
 Styling the card component to make it look decent.
-
 
 ```css
 .card {
@@ -125,16 +126,16 @@ Styling the card component to make it look decent.
 The User component displays the user data.
 
 ```js
-import React from 'react'
+import React from "react";
 
-import Card from '../card/card.component'
+import Card from "../card/card.component";
 
-import useFetch from '../../effects/use-fetch.effect'
+import useFetch from "../../effects/use-fetch.effect";
 
 const User = ({ userId }) => {
   const user = useFetch(
     `https://jsonplaceholder.typicode.com/users?id=${userId}`
-  )
+  );
 
   return (
     <Card>
@@ -147,10 +148,10 @@ const User = ({ userId }) => {
         <p>User not found</p>
       )}
     </Card>
-  )
-}
+  );
+};
 
-export default User
+export default User;
 ```
 
 We notice there is an import `useFetch` that we haven't written yet. Don't be surprised, but that will be the custom hook we will be writing a little later.
@@ -160,16 +161,16 @@ We notice there is an import `useFetch` that we haven't written yet. Don't be su
 The Post component will display the post data as expected.
 
 ```js
-import React from 'react'
+import React from "react";
 
-import Card from '../card/card.component'
+import Card from "../card/card.component";
 
-import useFetch from '../../effects/use-fetch.effect'
+import useFetch from "../../effects/use-fetch.effect";
 
 const Post = ({ postId }) => {
   const post = useFetch(
     `https://jsonplaceholder.typicode.com/posts?id=${postId}`
-  )
+  );
 
   return (
     <Card>
@@ -182,10 +183,10 @@ const Post = ({ postId }) => {
         <p> No post found </p>
       )}
     </Card>
-  )
-}
+  );
+};
 
-export default Post
+export default Post;
 ```
 
 We import `useFetch` here as well. Let us now go ahead and create a separate component for the hook.
@@ -195,25 +196,25 @@ We import `useFetch` here as well. Let us now go ahead and create a separate com
 Inside components directory create another directory called effects and inside effects create a file named `use-fetch.effect.js`. The same file will hold all the logic of actually making a fetch request to the API and returning the response back to the components.
 
 ```js
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react";
 
-const useFetch = url => {
-  const [data, setData] = useState(null)
+const useFetch = (url) => {
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(url)
-      const dataArray = await res.json()
-      setData(dataArray[0])
-    }
+      const res = await fetch(url);
+      const dataArray = await res.json();
+      setData(dataArray[0]);
+    };
 
-    fetchData()
-  }, [url])
+    fetchData();
+  }, [url]);
 
-  return data
-}
+  return data;
+};
 
-export default useFetch
+export default useFetch;
 ```
 
 The useFetch custom hook accepts a 'URL' parameter, does the fetching, and returns the data to the components that requested the data. That is all the useFetch custom hook does pretty much. Instead of us fetching data from each of these components we now leverage useFetch as a reusable component. And next time we have another component that requires the same component logic, we already have useFetch that can do the trick for us.
@@ -223,27 +224,32 @@ The useFetch custom hook accepts a 'URL' parameter, does the fetching, and retur
 Now for us to display the data on our browser we need to hook our components inside of App.js and pass the id as props that the components receive.
 
 ```js
-import React from 'react'
+import React from "react";
 
-import User from './components/user/user.component'
-import Post from './components/post/post.component'
+import User from "./components/user/user.component";
+import Post from "./components/post/post.component";
 
-import './App.css'
+import "./App.css";
 
-const App = props => {
+const App = (props) => {
   return (
     <div className="App">
       <User userId={5} />
       <Post postId={15} />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
 ```
 
 And after all that is done, we can now see something like this on the screen.
 
-<img src="/blog/custom-hook/final.png" alt="application-demo" />
+<Image
+  width={800}
+  height={800}
+  src="/blog/custom-hook/final.png"
+  alt="application-demo"
+/>
 
 There you go, we have our custom hook up and running. Understandably a custom hook is very much a necessity when we write components that use the same component logic. This process bares us from writing any repetitive code and instead write a reusable custom hook component that can be levearaged by various components at a time.
