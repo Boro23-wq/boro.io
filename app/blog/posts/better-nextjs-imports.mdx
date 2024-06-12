@@ -6,9 +6,7 @@ publishedAt: "2020-03-15"
 
 Nine days after first writing this post, the Next.js team [landed support for paths](https://github.com/zeit/next.js/pull/11293) in `tsconfig.json` and `jsconfig.json` by default! In Next.js 9.4 and onwards, you only need to specify a `baseURL` in your config file to support absolute imports:
 
-```json
-// tsconfig.json or jsconfig.json
-
+```json title="jsconfig.json"
 {
   "compilerOptions": {
     "baseURL": "."

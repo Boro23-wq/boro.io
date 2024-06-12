@@ -1,6 +1,6 @@
 ---
 title: history.push not re-rendering component.
-publishedAt: '2020-10-07'
+publishedAt: "2020-10-07"
 summary: React-router got me agitated indefinitiely. Problem with history and react-router versioning.
 ---
 
@@ -26,7 +26,7 @@ Enter our key player – the `AllProducts` component. It had a special power cal
 
 Check out this piece of code:
 
-```jsx title=AllProducts.js
+```jsx title="AllProducts.js"
 const AllProducts = () => {
   const [products, setProducts] = useState(null);
 
@@ -59,7 +59,7 @@ But here's the truth – none of those solutions worked for me. I was hitting de
 
 Finally, after a lot of trial and error, I stumbled upon something. In the React Docs, I discovered that useEffect had a secret trick. I could tell it to pay attention only when certain things changed. And that's when things clicked.
 
-```jsx title=AllProducts.js highlight=7
+```jsx title="AllProducts.js" {7}
 const AllProducts = () => {
   const [products, setProducts] = useState(null);
 
@@ -69,15 +69,15 @@ const AllProducts = () => {
   }, []);
 ```
 
-```jsx title=AllProducts.js highlight=7
+```jsx title="AllProducts.js" {7}
 const AllProducts = () => {
-  const [products, setProducts] = useState(null)
+  const [products, setProducts] = useState(null);
 
   useEffect(() => {
-    fetchData()
-    setLoading(false)
-  }, [products])
-}
+    fetchData();
+    setLoading(false);
+  }, [products]);
+};
 ```
 
 ## What We Missed:

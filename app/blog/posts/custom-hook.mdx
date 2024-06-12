@@ -81,7 +81,7 @@ The folder structure will look something like this after creating all the files:
 
 The card component essentially holds the User and the Post data.
 
-```js
+```js title="src/components/card/card.component.jsx"
 import React from "react";
 
 import "./card.css";
@@ -93,7 +93,7 @@ export default Card;
 
 Styling the card component to make it look decent.
 
-```css
+```css title="src/components/card/card.css"
 .card {
   background-color: lightgoldenrodyellow;
   min-width: 300px;
@@ -125,7 +125,7 @@ Styling the card component to make it look decent.
 
 The User component displays the user data.
 
-```js
+```js title="src/components/user/user.component.jsx"
 import React from "react";
 
 import Card from "../card/card.component";
@@ -160,7 +160,7 @@ We notice there is an import `useFetch` that we haven't written yet. Don't be su
 
 The Post component will display the post data as expected.
 
-```js
+```js title="src/components/post/post.component.jsx"
 import React from "react";
 
 import Card from "../card/card.component";
@@ -195,7 +195,7 @@ We import `useFetch` here as well. Let us now go ahead and create a separate com
 
 Inside components directory create another directory called effects and inside effects create a file named `use-fetch.effect.js`. The same file will hold all the logic of actually making a fetch request to the API and returning the response back to the components.
 
-```js
+```js title="src/components/effects/use-fetch.effect.js"
 import { useState, useEffect } from "react";
 
 const useFetch = (url) => {
@@ -223,7 +223,7 @@ The useFetch custom hook accepts a 'URL' parameter, does the fetching, and retur
 
 Now for us to display the data on our browser we need to hook our components inside of App.js and pass the id as props that the components receive.
 
-```js
+```js title="src/App.js"
 import React from "react";
 
 import User from "./components/user/user.component";

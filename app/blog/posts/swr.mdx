@@ -1,6 +1,6 @@
 ---
 title: SWR - React Hooks library for remote data fetching.
-publishedAt: '2021-01-05'
+publishedAt: "2021-01-05"
 summary: SWR or stale-while-revalidate helps developers to immediately load cached data and ensure freshness of the data by updating the cached content later.
 # blog: ['/blog/swr/cover.png']
 ---
@@ -16,21 +16,21 @@ In the above example, the useSWR hook accepts two parameters, a key string or a 
 ```js
 // importing SWR module
 
-import useSWR from 'swr'
+import useSWR from "swr";
 
 // fetcher function
-const fetcher = async path => {
-  const res = await fetch(path)
+const fetcher = async (path) => {
+  const res = await fetch(path);
 
-  return res.json()
-}
+  return res.json();
+};
 
 function Cats() {
-  const { data, error } = useSWR('/api/cats', fetcher)
+  const { data, error } = useSWR("/api/cats", fetcher);
 
-  if (error) return <div>Failed to load cats!</div>
-  if (!data) return <div>Loading Cats.</div>
-  return <div>Hi {data.name}!</div>
+  if (error) return <div>Failed to load cats!</div>;
+  if (!data) return <div>Loading Cats.</div>;
+  return <div>Hi {data.name}!</div>;
 }
 ```
 
@@ -46,48 +46,48 @@ This is how we implement an SWR. useSWR hook accepts two parameters. Firstly it 
 
 ### An Example
 
-```js
+```js title="fetchingdata/pages/index.js" {22}
 // importing libraries
-import useSWR from 'swr'
-import fetch from 'unfetch'
+import useSWR from "swr";
+import fetch from "unfetch";
 
-const fetcher = async path => {
-  const res = await fetch(path)
+const fetcher = async (path) => {
+  const res = await fetch(path);
 
-  return res.json()
-}
+  return res.json();
+};
 
 const Profile = () => {
-  const { data, error } = useSWR('/api/users/1', fetcher)
+  const { data, error } = useSWR("/api/users/1", fetcher);
 
   if (error) {
-    return <div>Failed to load user.</div>
+    return <div>Failed to load user.</div>;
   }
 
   if (!data) {
-    return <div>Loading user data...</div>
+    return <div>Loading user data...</div>;
   }
 
-  return <div>Hello {data.name}!</div>
-}
+  return <div>Hello {data.name}!</div>;
+};
 
-export default Profile
+export default Profile;
 ```
 
 In the above file, the useSWR hook accepts the key as the first argument and the fetcher function as the second argument. Essentially it is hitting the endpoint designated by the key (/api/users/1) for the data. The fetcher function then successfully hits the endpoint and displays the data as a div element (highlighted line) on successful data retrieval.
 
-```js
+```js title="fetchingdata/pages/api/users/[id].js"
 export default (req, res) => {
   const {
-    query: { id }
-  } = req
+    query: { id },
+  } = req;
 
   res.status(200).json({
-    email: 'me@boro.io',
+    email: "me@boro.io",
     id,
-    name: 'Boro'
-  })
-}
+    name: "Boro",
+  });
+};
 ```
 
 The file above is the data endpoint that the fetcher function hits to retrieve the desired data. The file sends a response as a JSON with the status of 200 indicating that the request was a success.

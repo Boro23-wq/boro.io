@@ -111,7 +111,7 @@ export const getStaticProps = async () => {
 
 Notice we pass in the data from our playlist array, as 'playlistLists'. Now these 'playlistLists' props will expose our data to the below component.
 
-```js
+```js {1}
 export default ({ playlistLists }) => (
   <>
     <Heading mt={8} mb={4} fontWeight="800">

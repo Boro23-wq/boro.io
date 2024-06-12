@@ -6,6 +6,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@icons-pack/react-simple-icons": "^9.5.0",
+    "@shikijs/transformers": "^1.6.4",
     "@tailwindcss/postcss": "4.0.0-alpha.13",
     "@types/node": "20.11.17",
     "@types/react": "18.2.55",
@@ -17,11 +19,12 @@
     "lucide-react": "^0.390.0",
     "next": "canary",
     "next-mdx-remote": "^4.4.1",
-    "next-themes": "^0.3.0",
     "postcss": "^8.4.35",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "rehype-pretty-code": "^0.13.2",
     "remark-gfm": "3.0.1",
+    "shiki": "^1.6.4",
     "sugar-high": "^0.6.0",
     "tailwindcss": "4.0.0-alpha.13",
     "typescript": "5.3.3"

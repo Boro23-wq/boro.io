@@ -13,17 +13,22 @@ Today we will look at how easy it is to fetch data hosted on a CMS from a Next.j
 
 First of all, we need to have two different application set up. One for the frontend (Next.js) for querying the data from Strapi and the other would be the server that would contain the database and server configurations.
 
-```js
+```bash
 npx create-next-app .
 ```
 
-```js
+```bash
 npx create-strapi-app . || npx create-strapi-app . --quickstart
 ```
 
-> The `--quickstart` flag is used to automatically set the database as SQLite. Since I will be using MongoDB, I would opt for manual installation.
+<Callout emoji="💡">
+  The `--quickstart` flag is used to automatically set the database as SQLite.
+  Since I will be using MongoDB, I would opt for manual installation.
+</Callout>
 
-We create two different directories for the frontend and the backend. The frontend directory contains all of the Next.js code while the backend directory contains all the Strapi code.
+We create two different directories for the frontend and the backend. The frontend
+directory contains all of the Next.js code while the backend directory contains all
+the Strapi code.
 
 ## Strapi CMS Configuration
 
@@ -58,7 +63,7 @@ Once we are done defining the types we can now register different songs and stor
 
 As we have our data ready we now need to set up the database. Setting up the database is fairly simple and requires only a few simple configurations.
 
-```js
+```js title="config/database.js" {7}
 module.exports = ({ env }) => ({
   defaultConnection: "default",
   connections: {
@@ -75,7 +80,10 @@ module.exports = ({ env }) => ({
 });
 ```
 
-> Make sure you have the Database connection string saved in .env file in DATABASE_URI.
+<Callout emoji="💡">
+  Make sure you have the Database connection string saved in .env file in
+  DATABASE_URI.
+</Callout>
 
 For setting up the database, there's concise documentation by Strapi, which can be found [here.](https://strapi.io/documentation/developer-docs/latest/guides/databases.html) Please make sure you go through the MongoDB section (in the documentation) to set up the database.
 
@@ -85,7 +93,7 @@ We are now all set with the backend/server part of our configuration. As you can
 
 In our Next.js application, all we have to do is set up the Strapi client in order to make a request to the server for retrieving the content that we stored earlier. The way we set up a Strapi Client is by exporting a class like so:
 
-```js
+```js title="StrapiClient.js"
 export default class StrapiClient {
   constructor() {}
 
@@ -102,7 +110,7 @@ All we do here is make an asynchronous request to the server and return the resp
 
 We then create an instance of Strapi Client exported earlier inside `index.js`. We use the instance to fetch data using "getStaticProps" from Next.js and return the data as a prop.
 
-```js
+```js title="pages/songs/index.js"
 const Strapi_Client = new StrapiClient();
 
 const Songs = ({ songsList }) => {
@@ -129,7 +137,7 @@ We have a couple of ways to fetch data in Next.js ("getServerSideProps", "getSta
 
 Right after, we map through the "songsList" (which is a prop) and render them in a component called SongCard. The SongCard component would look something like this:
 
-```js
+```js title="components/SongCard.js"
 import Image from "next/image";
 
 export default function SongCard({ song }) {
@@ -179,7 +187,10 @@ Setting up a Headless CMS like Strapi is not at all tedious and requires very li
 
 So there you go, those were a few benefits of using Headless CMS. And the list doesn't necessarily stop here. There are a number of benefits including the fact that developers can now spend more time focusing on content creation rather than content management is a huge plus. And, if you don't already know:
 
-> Spotify uses Next.js and Contentful for their platform for artists tool to help them promote music.
+<Callout emoji="💡">
+  Spotify uses Next.js and Contentful for their platform for artists tool to
+  help them promote music.
+</Callout>
 
 ## References
 

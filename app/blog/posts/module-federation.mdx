@@ -13,7 +13,12 @@ Before we try out Module Federation in two different Next.js applications and bo
 
 > Micro-frontend architecture is a design approach in which a front-end app is decomposed into individual, semi-independent “microapps” working loosely together. - [Bob Myers](https://www.toptal.com/front-end/micro-frontends-strengths-benefits)
 
-<img src="/blog/mod-fed/mod-fed-1.png" alt="Module Federation" />
+<Image
+  width={800}
+  height={800}
+  src="/blog/mod-fed/mod-fed-1.png"
+  alt="Module Federation"
+/>
 
 Very simply, micro-frontend allows multiple development teams to work on the same front-end application. The decomposed "micro-apps" can be maintained separately as they are de-coupled, which also means that they can be developed and deployed independently.
 
@@ -46,13 +51,13 @@ We are going to have two different Next.js applications for the demonstration. O
 
 Create a root directory that will contain both of our applications. Inside the directory, we will have two different independent Next.js applications.
 
-```js
+```bash
 mkdir mf-next && cd mf-next
 ```
 
 Let's go ahead and create the first application that will be our host. Just to make naming conventions a bit simple we will name the application as home. Go ahead and create the Next.js application.
 
-```js
+```bash
 npx create-next-app home
 ```
 
@@ -70,7 +75,7 @@ yarn add @module-federation/nextjs-mf
 
 And within the `package.json` include the following resolution to use a specific version of the webpack.
 
-```js
+```json title='package.json'
 "resolutions": {
     "webpack": "5.1.3"
   },
@@ -90,7 +95,7 @@ Once we have all of our packages installed, we now need to create a config file 
 
 Go ahead and paste the code below inside the `next.config.js` file. All this config does is, require the module-federation npm package and helps us expose the consumable component inside the "exposes" object.
 
-```jsx title=next.config.js highlight=15
+```jsx title="next.config.js" {15}
 const {
   withModuleFederation,
   MergeRuntime,
@@ -127,7 +132,7 @@ After we are done with the config file, we now need to include a custom document
 
 Copy the code below into the `_document.js` file. The file will enable `patchSharing()` which will help us share some part of the code with some other application.
 
-```jsx title=_document.js highlight=13
+```jsx title="_document.js" {13}
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { patchSharing } from "@module-federation/nextjs-mf";
 
@@ -158,7 +163,7 @@ Now the next step is to actually create the component that we will share with an
 
 Now go ahead and copy the following code inside the Header component that we just built:
 
-```jsx title=components/Header.jsx
+```jsx title="components/Header.jsx"
 const Header = () => (
   <div
     style={{
@@ -180,7 +185,7 @@ export default Header;
 
 The only way to show up this component on our application is to import it inside the index.js file which is the entry point of our Next.js application. Go ahead and import the component like so:
 
-```js title=index.js
+```js title="index.js"
 import Head from "next/head";
 
 const Header = (await import("home/Header")).default;
@@ -209,7 +214,7 @@ const Home = () => (
 
 We have one more step before we can create our second application. We need to export the `Header.jsx` component inside the "exposes" object that we defined earlier inside the `next.config.js` file.
 
-```js title=next.config.js
+```js title="next.config.js"
 module.exports = {
       exposes: {
         "./Header": "./components/Header",
@@ -239,7 +244,7 @@ nextjs-mf upgrade -p 3001
 
 The above command will upgrade the port to 3001 (to avoid port clashes) and it will automatically scaffold the `next.config.js` file for you. All you need to do is uncomment out whatever is in the "remotes" object with the key set to home (or whatever the name of your first application is). The file will look something like this:
 
-```jsx title=next.config.js highlight=4
+```jsx title="next.config.js" {4}
 module.exports = {
   webpack: (config, options) => {
     // additional config
@@ -255,7 +260,7 @@ module.exports = {
 
 Notice you will also have a `_document.js` inside the pages directory. Uncomment the script tag within the render method. The script tag is a special entry point (a few KB's in size). They contain a special webpack runtime that can interface with the host (or home in our case).
 
-```jsx title=index.js highlight=10
+```jsx title="index.js" {10}
 const Header = (await import("home/Header")).default;
 
 const Home = () => (
@@ -277,7 +282,12 @@ const Home = () => (
 
 In the index file of our remote app, we now import the Header component and render it within the second application. You now need to run both the development servers and there you go you now have a Next.js application (home) that exposes a consumable component which is then consumed by the second Next.js application (remote). I've put up a snapshot of both the applications below for you to demonstrate what we will have after following all the steps above.
 
-<img src="/blog/mod-fed/mod-fed-2.png" alt="application demo" />
+<Image
+  width={800}
+  height={800}
+  src="/blog/mod-fed/mod-fed-2.png"
+  alt="application demo"
+/>
 
 Any changes to the home application will now reflect it back on the remote application. How cool is that? That is Module Federation for you.
 

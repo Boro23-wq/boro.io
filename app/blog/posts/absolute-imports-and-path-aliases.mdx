@@ -40,7 +40,7 @@ import { AuthProvider } from "@/lib/auth";
 
 Let us look at how we can configure to use absolute imports. A typical configuration looks something like this:
 
-```js:jsconfig.json/tsconfig.json
+```js title="jsconfig.json"
 {
     "compilerOptions": {
       "baseUrl": ".",
@@ -62,7 +62,7 @@ import Footer from "components/Navigation/Footer";
 
 It would still be tedious to write the above import statement even with absolute import in place. So we can make use of paths to declare module aliases. The configuration would look something like this:
 
-```js:jsconfig.json/tsconfig.json
+```js title="jsconfig.json"
 {
   "compilerOptions": {
     "baseUrl": ".",

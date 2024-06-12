@@ -46,7 +46,7 @@ That doesn't make too much sense after all. It wouldn't probably make much diffe
 
 Once you scaffold a new NestJS project using its CLI, it gives you a few boilerplate files to start with. These are the core files that you would normally work with. The directory structure would look something like this:
 
-```
+```js title="src/"
 ├── src
 │   ├── app.controller.spec.ts
 │   ├── app.controller.ts
@@ -67,7 +67,7 @@ Right away you know that there's a certain structure laid out that you need to f
 
 Let us create a service file and export a class called CatsService which will implement a few methods which we can import and utilize in our controller file.
 
-```ts
+```js title="CatsService.js"
 import { Injectable } from "@nestjs/common";
 
 @Injectable()
@@ -84,7 +84,7 @@ export class CatsService {
 
 Here we are exporting a class called `CatsService` and have defined three different methods. We also use `@Injectable()` which is a decorator. The decorator attaches metadata and marks a class available to be provided and injected as a dependency. Since we have injected this class as a dependency, let's use it inside of the controller to retrieve the cats.
 
-```ts
+```js title="Controller.js"
 import { Controller, Get } from "@nestjs/common";
 import { CatsService } from "../services/cats.service";
 
@@ -120,7 +120,7 @@ Let's request to the endpoint `getAllCats` that we just defined and see what we 
 
 As we can tell the return result is received as expected. This is technically the pattern that we are going to see a lot with Nest. We have a service file that will implement all the methods/logic of our application while the controller file will take care of returning the results from the services using appropriate routes.
 
-```ts
+```js title="Module.js"
 import { Module } from "@nestjs/common";
 import { CatsController } from "./controllers/cats.controller";
 import { CatsService } from "./services/cats.service";
@@ -136,7 +136,7 @@ The module file above bundles all our controllers and providers/services togethe
 
 We can also create multiple feature modules that will help us organize the code relevant to a specific feature. All the feature modules can then be imported inside the root app model. For demonstration, we only have one root module above (the `cats.module.ts` file in this case).
 
-```ts
+```js title="NestFactory.js"
 import { NestFactory } from "@nestjs/core";
 import { CatsModule } from "./cats.module";
 

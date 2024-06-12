@@ -15,7 +15,11 @@ Rebuilding a website for every update could be a tedious task. The Incremental S
 
 For every incoming traffic, background regeneration pushes the newly-generated page after it's done generating, without any interruption.
 
-> We can use `fallback: true` option to fallback on stale version of the website when a newer version is being generated. Also, fallback is useful when someone requests a page that’s not generated yet.
+<Callout emoji="💡">
+  We can use `fallback: true` option to fallback on stale version of the website
+  when a newer version is being generated. Also, fallback is useful when someone
+  requests a page that’s not generated yet.
+</Callout>
 
 ## High-level Architecture
 
@@ -81,7 +85,7 @@ Note: To run this file locally you would need a GitHub access token. Generate on
 
 The code below handles the response and maps through the reactions available.
 
-```js
+```js {15}
 const json = await res.json();
 if (res.status !== 200) {
   console.error(json);
@@ -95,17 +99,17 @@ const reactions = json.data.repository.issue.reactionGroups.map(
 
 The data received is an array of objects like so. Each of these items is mapped through and the object property called 'totalCount' has the figure stored that indicates the total number of reactions for each emoji.
 
-```js:console.log(json.data.repository.issue.reactionGroups)
+```js title="console.log(json.data.repository.issue.reactionGroups)"
 reactions = [
-  { content: 'THUMBS_UP', users: { totalCount: 1111 } },
-  { content: 'THUMBS_DOWN', users: { totalCount: 158 } },
-  { content: 'LAUGH', users: { totalCount: 288 } },
-  { content: 'HOORAY', users: { totalCount: 236 } },
-  { content: 'CONFUSED', users: { totalCount: 119 } },
-  { content: 'HEART', users: { totalCount: 334 } },
-  { content: 'ROCKET', users: { totalCount: 283 } },
-  { content: 'EYES', users: { totalCount: 307 } }
-]
+  { content: "THUMBS_UP", users: { totalCount: 1111 } },
+  { content: "THUMBS_DOWN", users: { totalCount: 158 } },
+  { content: "LAUGH", users: { totalCount: 288 } },
+  { content: "HOORAY", users: { totalCount: 236 } },
+  { content: "CONFUSED", users: { totalCount: 119 } },
+  { content: "HEART", users: { totalCount: 334 } },
+  { content: "ROCKET", users: { totalCount: 283 } },
+  { content: "EYES", users: { totalCount: 307 } },
+];
 ```
 
 Right after, we then expose the reactions as props to be consumed by a component. We also have a revalidate count (here as 1) that indicates the number of seconds to wait from the moment a request comes in for the regeneration.

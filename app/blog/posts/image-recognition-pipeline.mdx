@@ -90,7 +90,10 @@ The following solution was attempted using the AWS account provided by my school
 2. The object detection program will run on the first instance while the second instance will run the text detection program.
 3. Please make sure you have the executable JAR files for each of the programs, as we will upload the JAR files in the instances.
 
-   > In simple words, a _JAR file_ is a file that contains a compressed version of .class files, audio files, image files, or directories.
+   <Callout emoji="💡">
+     In simple words, a **JAR** file is a file that contains a compressed
+     version of .class files, audio files, image files, or directories.
+   </Callout>
 
 4. Once you have the JAR files ready you can upload it to the respective EC2 instances using <b>Cyberduck</b> (Mac) or <b>WinSCP</b> (Windows). I am using Cyberduck for the project since I'm working with a Mac system.
    - If you want to learn how to upload file in EC2 instance using Cyberduck, follow the link - [FTP into your EC2-instance with Cyberduck](http://www.brianhoshi.com/blog/how-to-ftp-into-your-ec2-instance-with-cyberduck/)
@@ -106,13 +109,17 @@ We will now SSH from Mac to access both our EC2 instances.
     - Choose the <b>AWS Details</b> link above these instructions.
     - Choose the <b>Download PEM</b> button and save the <b>labsuser.pem</b> file. (Typically your browser will save it to the Downloads directory.)
 2.  Open a terminal window, and change directory `cd` to the directory where the <b>.pem</b> file was downloaded. For example, run this command, if it was saved to your Downloads directory:
+
     ```bash
     cd ~/Downloads
     ```
+
 3.  Change the permissions on the key to be read only, by running this command:
-    ```shell
+
+    ```bash
     chmod 400 labsuser.pem
     ```
+
 4.  Return to the AWS Management Console, and in the EC2 service, choose <b>Instances</b>. Check the box next to the instance you want to connect to.
 5.  In the <b>Description tab</b>, copy the <b>IPv4 Public IP</b> value.
 6.  Return to the terminal window and run this command (replace <b>public-ip</b> with the actual public IP address you copied):
@@ -145,33 +152,40 @@ Once we SSH to the two EC2 instances we will have something like this:
 ### Running program on EC2-A instance (First EC2 instance):
 
 1. Once you run the AWSObjectDetection.jar on EC2-A instance the images that satisfies the condition will be pushed to the SQS (Queue).
+
    <Image
      src="/blog/image-rec-pipeline/msgs-push-to-sqs-3.png"
      alt="Item 5 pushed to queue"
      width={800}
      height={800}
    />
+
    <Image
      src="/blog/image-rec-pipeline/msgs-push-to-sqs-2.png"
      alt="Item 6 pushed to queue"
      width={800}
      height={800}
    />
+
    <Image
      src="/blog/image-rec-pipeline/msgs-push-to-sqs-1.png"
      alt="Item 7 pushed to queue"
      width={800}
      height={800}
    />
+
 2. We have 6 items that are pushed to the queue, since only 6 items satisfies the condition ( Label = "Car" and Confidence > 90).
 3. The queue is created like so:
+
    <Image
      src="/blog/image-rec-pipeline/queue-creation.png"
      alt="queue creation"
      width={800}
      height={800}
    />
+
 4. And the contents of the queues can be obtained by long polling:
+
    <Image
      src="/blog/image-rec-pipeline/content-inside-queue.png"
      alt="content inside queue"
@@ -184,14 +198,17 @@ Once we populate the queues we can see how does it look when we run the AWSTextR
 ### Running program on EC2-B instance (Second EC2 instance):
 
 1. We run the AWSTextRekognition.jar on EC2-B instance like so:
+
    <Image
      src="/blog/image-rec-pipeline/cmd-to-run-program-ec2-b.png"
      alt="Snapshot of pogram running on EC2-B instance"
      width={800}
      height={800}
    />
+
 2. When instance B finishes, it prints to a file (output.txt), the indexes of the images that have both cars and text, and also prints the actual text in each image next to its index.
 3. The final output stored in output.txt looks like this:
+
    <Image
      src="/blog/image-rec-pipeline/final-output.png"
      alt="Final output"

@@ -31,6 +31,14 @@
   --mono5: var(--gray5);
 }
 
+html.light[data-theme="dark"] {
+  display: none;
+}
+
+html.dark[data-theme="light"] {
+  display: none;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --sh-class: #4c97f8;
@@ -38,15 +46,23 @@
     --sh-keyword: #f47067;
     --sh-string: #0fa295;
   }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--mono5) transparent;
+  }
+
+  code[data-theme*=" "],
+  code[data-theme*=" "] span {
+    color: var(--shiki-dark);
+    /* background-color: var(--shiki-dark-bg); */
+  }
+
   html {
     font-family: sans-serif;
     color-scheme: dark;
     color: #d4d4d4;
     background-color: #1a1a1a;
-  }
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: var(--mono5) transparent;
   }
 }
 
@@ -54,6 +70,12 @@
   * {
     scrollbar-width: thin;
     scrollbar-color: var(--mono2) transparent;
+  }
+
+  code[data-theme*=" "],
+  code[data-theme*=" "] span {
+    color: var(--shiki-light);
+    /* background-color: var(--shiki-light-bg); */
   }
 }
 
@@ -100,16 +122,47 @@ body {
 }
 
 .prose pre {
-  @apply my-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-700 py-2 px-3 text-sm;
+  @apply bg-neutral-50 dark:bg-neutral-800 rounded-b-lg overflow-x-auto py-4 text-sm border-neutral-200 dark:border-neutral-500 border-b border-x border-t-neutral-200 border-x-neutral-200 dark:border-b-neutral-700 dark:border-x-neutral-700;
+  counter-reset: line;
 }
 
 .prose code {
-  @apply px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded-md text-[12.5px] font-normal;
+  @apply bg-neutral-50 dark:bg-neutral-800 rounded-md text-[12.5px] p-1 font-normal;
+}
+
+.prose pre code > [data-line]::before {
+  @apply text-neutral-400 dark:text-neutral-500 mr-8 inline-block text-right w-4;
+  counter-increment: line;
+  content: counter(line);
+}
+
+.prose pre code[data-line-numbers-max-digits="2"] > [data-line]::before {
+  @apply w-8;
+}
+
+.prose pre code[data-line-numbers-max-digits="3"] > [data-line]::before {
+  @apply w-12;
 }
 
 .prose pre code {
   @apply p-0;
   border: initial;
+}
+
+pre [data-line] {
+  @apply px-4;
+}
+
+figcaption[data-rehype-pretty-code-title] {
+  @apply bg-neutral-100 dark:bg-neutral-700 max-w-fit rounded-sm px-2 text-sm;
+}
+
+span[data-highlighted-line] {
+  @apply dark:bg-neutral-700;
+}
+
+mark[data-highlighted-chars] {
+  @apply bg-neutral-200 dark:bg-neutral-600 rounded-sm px-1;
 }
 
 .prose code span {
@@ -150,7 +203,7 @@ body {
 }
 
 .prose ul {
-  @apply list-disc pl-6;
+  @apply list-[disc] pl-5;
 }
 
 .prose ul.contains-task-list li.task-list-item {
@@ -177,6 +230,10 @@ body {
   /* Override removing top margin, causing layout shift */
   margin-top: 1.25em !important;
   margin-bottom: 1.25em !important;
+}
+
+.prose .callout > p {
+  margin: 0 !important;
 }
 
 .title {
@@ -208,6 +265,10 @@ input[type="email"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+}
+
+input[type="checkbox"] {
+  @apply mr-2 disabled:bg-blue-500;
 }
 
 table {

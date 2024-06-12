@@ -20,7 +20,7 @@ Once you install that, you will be ready to keep going. If you are looking for a
 
 We have the S3 config provider that does all the setups that we require to get started. Since we don't actually require any real access/secret keys we can hardcode the keys like so or if you have the keys be sure to pull it out from the .env file. We now have the S3 object with the required config. We have the methods getS3() and getBucketName() to export the S3 object and the name of the bucket to be used anywhere in the project.
 
-```ts
+```ts title="S3ConfigProvider.ts"
 import { Injectable } from "@nestjs/common";
 import * as S3 from "aws-sdk/clients/s3";
 
@@ -66,7 +66,7 @@ Also, be sure to run the createBucket() method once to create a bucket for you w
 
 Let us define the DTO of the image file object along with the response object that we will receive once we upload the image to the S3.
 
-```ts
+```ts title="UploadImageDTO.ts"
 import { ApiPropertyOptional } from "@nestjs/swagger";
 
 export class ImageFileDTO {
@@ -113,7 +113,7 @@ We are all set with the DTO. Now we can go ahead and define the only route that 
 
 Inside the controller file, we define the route or path prefix `/upload` that will take care of the action to upload the image file to S3. We are using FileInterceptors to only intercept files with a specific key. The `upload` method below will delegate the rest of the operation to the service file by calling the upload method inside the service file which performs the required logic to upload the image to S3.
 
-```ts
+```ts title="uploadimage.controller.ts"
 import {
   Post,
   HttpStatus,
@@ -159,7 +159,7 @@ The service class (ImageUploadService) is responsible for uploading the image to
 
 The essence of a service class or a provider is to organize and share business logic, data, or functions with multiple components within an application.
 
-```ts
+```ts title="uploadimage.service.ts"
 import { Logger } from "@nestjs/common";
 import { S3 } from "aws-sdk";
 import { S3ConfigProvider } from "./config/S3ConfigProvider";
@@ -210,7 +210,7 @@ We finally return a promise with the resolve/reject object based on if the opera
 The UploadImageModule class creates a module with the controller and provider files that we've created earlier. Every module that we create inside a project can be shared.
 For example, if we had another module importing the UploadImageModule, it would have access to the UploadImageService and its methods.
 
-```ts
+```ts title="uploadimage.module.ts"
 import { Module } from "@nestjs/common";
 import { UploadImageController } from "./uploadimage.controller";
 import { UploadImageService } from "./uploadimage.service";
@@ -225,7 +225,7 @@ export class UploadImageModule {}
 
 The very last step is to actually import this module (UploadImageModule) into the root app module. Let us do just that for the final step.
 
-```ts
+```ts title="app.module.ts"
 import { Module } from "@nestjs/common";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
