@@ -18,6 +18,12 @@ const options = {
   },
 };
 
+// callout types
+interface CalloutProps {
+  emoji: string;
+  children: React.ReactNode;
+}
+
 function Table({ data }) {
   let headers = data.headers.map((header, index) => (
     <th key={index}>{header}</th>
@@ -100,11 +106,11 @@ function createHeading(level) {
   return Heading;
 }
 
-function Callout(props) {
+function Callout({ children, emoji }: CalloutProps) {
   return (
     <div className="my-2 px-4 py-3 border border-neutral-200 dark:border-neutral-700 bg-gradient-to-r from-neutral-100 via-neutral-100 to-neutral-200 dark:bg-gradient-to-r dark:from-neutral-800 dark:via-neutral-800 dark:to-neutral-900 rounded p-1 text-sm flex items-center text-neutral-900 dark:text-neutral-100 ">
-      <div className="flex items-center w-4 mr-6 text-xl">{props.emoji}</div>
-      <div className="w-full callout">{props.children}</div>
+      <div className="flex items-center w-4 mr-6 text-xl">{emoji}</div>
+      <div className="w-full callout">{children}</div>
     </div>
   );
 }
@@ -118,7 +124,7 @@ let components = {
   h6: createHeading(6),
   Image: RoundedImage,
   a: CustomLink,
-  Callout: Callout,
+  Callout,
   Table,
   pre: Pre,
 };

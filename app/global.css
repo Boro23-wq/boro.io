@@ -267,9 +267,9 @@ input[type="email"] {
   appearance: none;
 }
 
-input[type="checkbox"] {
+/* input[type="checkbox"] {
   @apply mr-2 disabled:bg-blue-500;
-}
+} */
 
 table {
   display: block;
