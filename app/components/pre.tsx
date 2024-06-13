@@ -24,6 +24,30 @@ const iconMap = {
   // Add more mappings as needed
 };
 
+const fadeIn = {
+  animation: "fade-in 0.5s ease-in-out",
+  "@keyframes fade-in": {
+    from: {
+      opacity: 0,
+    },
+    to: {
+      opacity: 1,
+    },
+  },
+};
+
+const fadeOut = {
+  animation: "fade-out 0.5s ease-in-out",
+  "@keyframes fade-out": {
+    from: {
+      opacity: 1,
+    },
+    to: {
+      opacity: 0,
+    },
+  },
+};
+
 const Pre = (props) => {
   const preRef = useRef<HTMLPreElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -80,9 +104,7 @@ const Pre = (props) => {
             <Copy
               width={16}
               height={16}
-              className={`transition-all duration-300 cursor-pointer text-neutral-500 hover:text-neutral-400 ${
-                copied ? "opacity-0" : "opacity-100"
-              }`}
+              className="transition-all duration-300 cursor-pointer text-neutral-500 hover:text-neutral-400"
             />
           )}
         </button>

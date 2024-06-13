@@ -1,4 +1,5 @@
 import { getBlogPosts } from "app/blog/utils";
+import { getProjects } from "app/project/utils";
 
 export const baseUrl = "https://boroio.vercel.app";
 
@@ -8,10 +9,15 @@ export default async function sitemap() {
     lastModified: post.metadata.publishedAt,
   }));
 
-  let routes = ["", "/blog"].map((route) => ({
+  let projects = getProjects().map((project) => ({
+    url: `${baseUrl}/project/${project.slug}`,
+    lastModified: project.metadata.publishedAt,
+  }));
+
+  let routes = ["", "/blog", "/project", "/work"].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString().split("T")[0],
   }));
 
-  return [...routes, ...blogs];
+  return [...routes, ...blogs, ...projects];
 }

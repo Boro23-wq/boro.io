@@ -108,6 +108,35 @@ function createHeading(level) {
   return Heading;
 }
 
+function CustomCheckbox({ checked, children }) {
+  return (
+    <div className="flex items-center">
+      <input
+        type="checkbox"
+        checked={checked}
+        readOnly
+        className="form-checkbox h-3.5 w-3.5 accent-neutral-600 hover:accent-neutral-700 dark:accent-neutral-400 dark:hover:accent-neutral-300 transition-all duration-150 ease-in-out"
+      />
+      <label className="ml-1">{children}</label>
+    </div>
+  );
+}
+
+function CustomListItem({ children }) {
+  if (children && children[0]?.type === "input") {
+    const checked = children[0]?.props.checked || false;
+    const checkboxLabel = children[2];
+
+    return (
+      <li className="task-list-item">
+        <CustomCheckbox checked={checked}>{checkboxLabel}</CustomCheckbox>
+      </li>
+    );
+  }
+
+  return <li className="task-list-item">{children}</li>;
+}
+
 function Callout({ children, emoji }: CalloutProps) {
   return (
     <div className="my-2 px-4 py-3 border border-neutral-200 dark:border-neutral-700 bg-gradient-to-r from-neutral-100 via-neutral-100 to-neutral-200 dark:bg-gradient-to-r dark:from-neutral-800 dark:via-neutral-800 dark:to-neutral-900 rounded p-1 text-sm flex items-center text-neutral-900 dark:text-neutral-100 ">
@@ -126,6 +155,7 @@ let components = {
   h6: createHeading(6),
   Image: RoundedImage,
   a: CustomLink,
+  li: CustomListItem,
   Callout,
   Table,
   pre: Pre,

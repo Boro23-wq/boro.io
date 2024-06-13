@@ -4,11 +4,9 @@ summary: Carely was built as a set of enrollee-centered, goal-oriented, cultural
 publishedAt: "2023-07-20"
 image: /projects/cover/carely.png
 tags: ["API", "Swagger", "UX", "UI"]
-# slug: carely
 ---
 
-<b>Note</b>: This project is a piece of a pie, me and my team members
-contributed to during the summer. There were 4-5 different teams including ours,
+This project is a piece of a pie, me and my team members contributed to during the summer. There were 4-5 different teams including ours,
 with 4-5 team members on each team that worked on various features of the
 product.
 
@@ -16,13 +14,13 @@ product.
 
 Carely was built as a set of enrollee-centered, goal-oriented, culturally relevant and logical steps to assure that an enrollee receives needed services in a supportive, effective, efficient, timely and cost-effective manner. Care management emphasizes prevention, continuity of care and coordination of care, which advocates for, and links enrollees to, services as necessary across providers and settings. At a minimum, care management functions must include, but are not limited to:
 
-- Early identification of enrollees who have or may have special needs;
-- Assessment of an enrollee's risk factors;
-- Development of a plan of care;
-- Referrals and assistance to ensure timely access to providers;
-- Coordination of care actively linking the enrollee to providers, medical services, residential, social, behavioral, and other support services where needed; 6. Monitoring;
-- Continuity of care; and
-- Follow-up and documentation.
+1. Early identification of enrollees who have or may have special needs;
+2. Assessment of an enrollee's risk factors;
+3. Development of a plan of care;
+4. Referrals and assistance to ensure timely access to providers;
+5. Coordination of care actively linking the enrollee to providers, medical services, residential, social, behavioral, and other support services where needed; 6. Monitoring;
+6. Continuity of care; and,
+7. Follow-up and documentation.
 
 ## Feature my team worked on
 
@@ -44,73 +42,27 @@ A solution that drives the optimization of every facet of documenting components
 
 ## Key stakeholders
 
-<table>
-  <tr>
-    <th>#</th>
-    <th>Stakeholder</th>
-    <th>Use case</th>
-  </tr>
-  <tr>
-    <td>1.</td>
-    <td>Patients</td>
-    <td>
-      Retrieve case information, monitor case health, and access self-service.
-    </td>
-  </tr>
-  <tr>
-    <td>2.</td>
-    <td>Medical practitioners</td>
-    <td>
-      Access patient information to build personalized case plan, and perform
-      risk evaluation
-    </td>
-  </tr>
-  <tr>
-    <td>3.</td>
-    <td>Insurance providers</td>
-    <td>Provide services to fit patient needs.</td>
-  </tr>
-  <tr>
-    <td>4.</td>
-    <td>Care-givers</td>
-    <td>Access health information, and review cases.</td>
-  </tr>
-  <tr>
-    <td>5.</td>
-    <td>Case managers</td>
-    <td>
-      Maintains external data, determines plan objectives and suggests health
-      recommendations.
-    </td>
-  </tr>
-  <tr>
-    <td>6.</td>
-    <td>PM/BA&#39;s</td>
-    <td>
-      Responsible for gathering and prioritizing requirements of the case notes
-      system.
-    </td>
-  </tr>
-  <tr>
-    <td>7.</td>
-    <td>Development team</td>
-    <td>
-      Responsible for design and implementation of the case notes backend and
-      frontend system.
-    </td>
-  </tr>
-</table>
+| #   | Stakeholder           | Use case                                                                                 |
+| --- | --------------------- | ---------------------------------------------------------------------------------------- |
+| 1.  | Patients              | Retrieve case information, monitor case health, and access self-service.                 |
+| 2.  | Medical practitioners | Access patient information to build personalized case plan, and perform risk evaluation  |
+| 3.  | Insurance providers   | Provide services to fit patient needs.                                                   |
+| 4.  | Care-givers           | Access health information, and review cases.                                             |
+| 5.  | Case managers         | Maintains external data, determines plan objectives and suggests health recommendations. |
+| 6.  | PM/BA's               | Responsible for gathering and prioritizing requirements of the case notes system.        |
+| 7.  | Development team      | Responsible for design and implementation of the case notes backend and frontend system. |
+
 ## Basic requirements for persona description
 
-1. <b>Background information</b> - Customer’s circumstances and conditions.
-2. <b>Reason statement</b> - The purpose of the interview/meeting.
-3. <b>Observation statement</b> - Differentiate one customer from another (Objective
+1. <u>Background information</u> - Customer’s circumstances and conditions.
+2. <u>Reason statement</u> - The purpose of the interview/meeting.
+3. <u>Observation statement</u> - Differentiate one customer from another (Objective
    - facts).
-4. <b>Content statement</b> - Key events.
-5. <b>Results statement</b> - Evaluation of the meeting in relation to the purpose.
+4. <u>Content statement</u> - Key events.
+5. <u>Results statement</u> - Evaluation of the meeting in relation to the purpose.
    - Should disclose if purpose was achieved or not.
-6. <b>Impression statement</b> - Links case manager’s plan.
-7. <b>Plan statement</b> - should include next steps assignment. - Should include
+6. <u>Impression statement</u> - Links case manager’s plan.
+7. <u>Plan statement</u> - should include next steps assignment. - Should include
    the next meeting date. - Connected to Immediate Plan (IP). - Include reasons for
    the next meeting.
 
@@ -119,6 +71,7 @@ A solution that drives the optimization of every facet of documenting components
 <Image
   src="/projects/carely/user-persona.png"
   alt="persona"
+  priority
   width={800}
   height={800}
 />
@@ -137,11 +90,12 @@ A solution that drives the optimization of every facet of documenting components
 
 ## User stories considered
 
-1. As an admin:
+1. <u>As an admin:</u>
 
    - I should be able to create, and manage case managers, so that I can assure appropriate medical care for the patients.
 
-2. As a case manager
+2. <u>As a case manager:</u>
+
    - I should be able to create, and manage a case, so that I can retrieve a clients’ case information and case history on demand.
    - I should be able to attach top-level categories to a case, so that it is easier to retrieve cases based on the category.
    - I should be able to attach severity definitions to the case, so that volatile cases can be monitored closely.
@@ -156,9 +110,9 @@ As a case manager, I should be able to upload my profile picture, so that I can 
 
 ## Acceptance Criteria
 
-- A user should not be able to upload if the upload file is missing.
-- A user should only be able to upload file size < 1 MB.
-- A user should be able to only upload image MIME types (png, jpeg, jpg, etc.).
+- [x] A user should not be able to upload if the upload file is missing.
+- [x] A user should only be able to upload file size < 1 MB.
+- [x] A user should be able to only upload image MIME types (png, jpeg, jpg, etc.).
 
 ## Case manager persona ERD
 
@@ -166,21 +120,21 @@ As a case manager, I should be able to upload my profile picture, so that I can 
 
 ## Tech Stack (Frontend)
 
-- Next.js - Production ready applications and scales.2.
-- Typescript - For type-safety.
-- Tailwind CSS - Next generation Typescript and Node ORM.
-- Iron-session - Node.js stateless session utility.
-- Vercel - Seamless deployment and scaling.
+- `Next.js` - Production ready applications and scales.2.
+- `Typescript` - For type-safety.
+- `Tailwind CSS` - Next generation Typescript and Node ORM.
+- `Iron-session` - Node.js stateless session utility.
+- `Vercel` - Seamless deployment and scaling.
 
 ## Tech Stack (Backend)
 
-- Postman - Design and test API.
-- Jest + Supertest - E2E testing.
-- Nest.js - Progressive Node.js framework.
-- Typescript - For type-safety
-- Prisma - Next generation Typescript and Node ORM.
-- Planetscale - Scalable MYSQL platform.
-- Vercel - Serverless, event-driven compute service.
+- `Postman` - Design and test API.
+- `Jest + Supertest` - E2E testing.
+- `Nest.js` - Progressive Node.js framework.
+- `Typescript` - For type-safety
+- `Prisma` - Next generation Typescript and Node ORM.
+- `Planetscale` - Scalable MYSQL platform.
+- `Vercel` - Serverless, event-driven compute service.
 
 ## Resources
 
@@ -198,7 +152,11 @@ The API backend can be found [here.](https://github.com/Boro23-wq/casenotesweb-b
 
 The frontend of Carely is written in Next.js, Typescript, and TailwindCSS.
 
-> Next.js gives you the best developer experience with all the features you need for production: hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more. No config needed.
+<Callout emoji="💡">
+  Next.js gives you the best developer experience with all the features you need
+  for production: hybrid static & server rendering, TypeScript support, smart
+  bundling, route pre-fetching, and more. No config needed.
+</Callout>
 
 <Image
   src="/projects/carely/carely.gif"

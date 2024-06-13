@@ -21,6 +21,40 @@ export const metadata: Metadata = {
     default: "Home | Boro",
     template: "%s | Boro",
   },
+  icons: {
+    apple: [
+      {
+        rel: "apple-touch-icon",
+        type: "image/png",
+        media: "(prefers-color-scheme: light)",
+        url: "/apple-touch-icon-light.png?v=2",
+        fetchPriority: "high",
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        media: "(prefers-color-scheme: dark)",
+        url: "/apple-touch-icon-dark.png?v=2",
+        fetchPriority: "high",
+      },
+    ],
+    icon: [
+      {
+        rel: "icon",
+        type: "image/png",
+        media: "(prefers-color-scheme: light)",
+        url: "/icon-light.png?v=2",
+        fetchPriority: "high",
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        media: "(prefers-color-scheme: dark)",
+        url: "/icon-dark.png?v=2",
+        fetchPriority: "high",
+      },
+    ],
+  },
   description: "Developer, and blogger.",
   openGraph: {
     title: "Sintu Boro",
