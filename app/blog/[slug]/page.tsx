@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { CustomMDX } from "app/components/mdx";
 import { formatDate, getBlogPosts } from "app/blog/utils";
 import { baseUrl } from "app/sitemap";
+import Link from "next/link";
 
 export async function generateStaticParams() {
   let posts = getBlogPosts();
@@ -13,6 +15,7 @@ export async function generateStaticParams() {
 
 export function generateMetadata({ params }) {
   let post = getBlogPosts().find((post) => post.slug === params.slug);
+
   if (!post) {
     return;
   }
@@ -52,11 +55,23 @@ export function generateMetadata({ params }) {
 }
 
 export default async function Blog({ params }) {
-  let post = getBlogPosts().find((post) => post.slug === params.slug);
+  let posts = getBlogPosts();
+  const sortedPosts = posts.sort((a, b) => {
+    return (
+      new Date(b.metadata.publishedAt).getTime() -
+      new Date(a.metadata.publishedAt).getTime()
+    );
+  });
 
-  if (!post) {
+  let postIndex = sortedPosts.findIndex((post) => post.slug === params.slug);
+
+  if (postIndex === -1) {
     notFound();
   }
+
+  let post = posts[postIndex];
+  let previousPost = posts[postIndex - 1] || null;
+  let nextPost = posts[postIndex + 1] || null;
 
   return (
     <section>
@@ -90,9 +105,56 @@ export default async function Blog({ params }) {
           {formatDate(post.metadata.publishedAt)}
         </p>
       </div>
-      <article className="prose">
+      <article className="mb-10 prose">
         <CustomMDX source={post.content} />
       </article>
+      <hr className="text-neutral-200 dark:text-neutral-700" />
+      <div className="flex justify-between mt-8">
+        {previousPost ? (
+          <div className="flex items-end">
+            <ChevronLeft
+              size={20}
+              className="mb-0.5 text-neutral-500 dark:text-neutral-400"
+            />
+            <Link
+              aria-label={`Go to next page: ${previousPost.metadata.title}`}
+              className="flex flex-col justify-between text-md px-2"
+              href={`/blog/${previousPost?.slug}`}
+            >
+              <span className="transition-all text-sm mb-1 text-neutral-500 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-300">
+                Previous
+              </span>
+              <span className="transition-all text-md text-neutral-700 dark:text-neutral-300">
+                {previousPost.metadata.title.substring(0, 30)}...
+              </span>
+            </Link>
+          </div>
+        ) : (
+          <span></span>
+        )}
+        {nextPost ? (
+          <div className="flex items-end">
+            <Link
+              aria-label={`Go to next page: ${nextPost.metadata.title}`}
+              className="flex flex-col justify-between text-md px-2"
+              href={`/blog/${nextPost?.slug}`}
+            >
+              <span className="transition-all text-sm mb-1 text-neutral-500 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-300">
+                Next
+              </span>
+              <span className="transition-all text-md text-neutral-700 dark:text-neutral-300">
+                {nextPost.metadata.title.substring(0, 30)}...
+              </span>
+            </Link>
+            <ChevronRight
+              size={20}
+              className="mb-0.5 text-neutral-500 dark:text-neutral-400"
+            />
+          </div>
+        ) : (
+          <span></span>
+        )}
+      </div>
     </section>
   );
 }
