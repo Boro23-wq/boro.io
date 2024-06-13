@@ -118,14 +118,14 @@ export default async function Blog({ params }) {
             />
             <Link
               aria-label={`Go to next page: ${previousPost.metadata.title}`}
-              className="flex flex-col justify-between text-md px-2"
+              className="flex flex-col justify-between text-md"
               href={`/blog/${previousPost?.slug}`}
             >
               <span className="transition-all text-sm mb-1 text-neutral-500 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-300">
                 Previous
               </span>
-              <span className="transition-all text-md text-neutral-700 dark:text-neutral-300">
-                {previousPost.metadata.title.substring(0, 30)}...
+              <span className="w-20 sm:w-80 truncate transition-all text-md text-neutral-700 dark:text-neutral-300">
+                {previousPost.metadata.title}
               </span>
             </Link>
           </div>
@@ -136,14 +136,14 @@ export default async function Blog({ params }) {
           <div className="flex items-end">
             <Link
               aria-label={`Go to next page: ${nextPost.metadata.title}`}
-              className="flex flex-col justify-between text-md px-2"
+              className="flex flex-col justify-between text-md"
               href={`/blog/${nextPost?.slug}`}
             >
               <span className="transition-all text-sm mb-1 text-neutral-500 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-300">
                 Next
               </span>
-              <span className="transition-all text-md text-neutral-700 dark:text-neutral-300">
-                {nextPost.metadata.title.substring(0, 30)}...
+              <span className="w-20 sm:w-60 md:w-80 truncate transition-all text-md text-neutral-700 dark:text-neutral-300">
+                {nextPost.metadata.title}
               </span>
             </Link>
             <ChevronRight
