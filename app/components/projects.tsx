@@ -17,8 +17,8 @@ export function Projects() {
           return 1;
         })
         .map((project) => (
-          <div className="mb-4">
-            <Card key={project.slug}>
+          <div key={project.slug} className="mb-4">
+            <Card>
               <Article project={project} />
             </Card>
           </div>

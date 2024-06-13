@@ -8,10 +8,16 @@ import Pre from "./pre";
 
 /** @type {import('rehype-pretty-code').Options} */
 const options = {
-  theme: {
-    dark: "github-dark-dimmed",
+  themes: {
     light: "github-light",
+    dark: "github-dark",
+    dim: "github-dimmed",
+    // any number of themes
   },
+
+  // optional customizations
+  defaultColor: "light",
+  cssVariablePrefix: "--shiki-",
   defaultLang: {
     block: "plaintext",
     inline: "plaintext",

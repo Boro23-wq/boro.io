@@ -15,7 +15,7 @@
   --gray2: #eaeaea;
   --gray5: #2e2e2e;
 
-  /* code formatiting */
+  /* code formating */
   --sh-class: #2d5e9d;
   --sh-identifier: #354150;
   --sh-sign: #8996a3;
@@ -52,11 +52,10 @@ html.dark[data-theme="light"] {
     scrollbar-color: var(--mono5) transparent;
   }
 
-  code[data-theme*=" "],
+  /* code[data-theme*=" "],
   code[data-theme*=" "] span {
     color: var(--shiki-dark);
-    /* background-color: var(--shiki-dark-bg); */
-  }
+  } */
 
   html {
     font-family: sans-serif;
@@ -72,12 +71,17 @@ html.dark[data-theme="light"] {
     scrollbar-color: var(--mono2) transparent;
   }
 
-  code[data-theme*=" "],
+  /* code[data-theme*=" "],
   code[data-theme*=" "] span {
     color: var(--shiki-light);
-    /* background-color: var(--shiki-light-bg); */
-  }
+  } */
 }
+
+/* code[data-theme*=" "],
+code[data-theme*=" "] span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+} */
 
 html {
   min-width: 360px;
