@@ -52,10 +52,10 @@ html.dark[data-theme="light"] {
     scrollbar-color: var(--mono5) transparent;
   }
 
-  /* code[data-theme*=" "],
-  code[data-theme*=" "] span {
+  pre code[data-theme],
+  pre code[data-theme] span {
     color: var(--shiki-dark);
-  } */
+  }
 
   html {
     font-family: sans-serif;
@@ -71,17 +71,11 @@ html.dark[data-theme="light"] {
     scrollbar-color: var(--mono2) transparent;
   }
 
-  /* code[data-theme*=" "],
-  code[data-theme*=" "] span {
+  pre code[data-theme],
+  pre code[data-theme] span {
     color: var(--shiki-light);
-  } */
+  }
 }
-
-/* code[data-theme*=" "],
-code[data-theme*=" "] span {
-  color: var(--shiki-light);
-  background-color: var(--shiki-light-bg);
-} */
 
 html {
   min-width: 360px;
