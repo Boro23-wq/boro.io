@@ -1,7 +1,7 @@
 import { getBlogPosts } from "app/blog/utils";
 import { getProjects } from "app/project/utils";
 
-export const baseUrl = "https://boroio.vercel.app";
+export const baseUrl = "https://boro.im";
 
 export default async function sitemap() {
   let blogs = getBlogPosts().map((post) => ({

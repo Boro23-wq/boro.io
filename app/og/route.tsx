@@ -21,7 +21,7 @@ export async function GET(req: NextRequest) {
           flexDirection: "column",
           alignItems: "flex-start",
           justifyContent: "center",
-          backgroundImage: "url(https://boroio.vercel.app/og-bg.png)",
+          backgroundImage: "url(https://boro.im/og-bg.png)",
         }}
       >
         <div
