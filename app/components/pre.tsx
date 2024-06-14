@@ -95,7 +95,7 @@ const Pre = (props) => {
         <button
           aria-label="Copy code"
           type="button"
-          className="h-4 w-4"
+          className="transition-all h-4 w-4 active:opacity-50"
           onClick={onCopy}
         >
           {copied ? (

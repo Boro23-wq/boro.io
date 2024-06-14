@@ -138,7 +138,7 @@ figcaption[data-rehype-pretty-code-title] {
 }
 
 span[data-highlighted-line] {
-  @apply dark:bg-neutral-700;
+  @apply bg-neutral-100 dark:bg-neutral-700 border-l-3 border-neutral-500 dark:border-neutral-400;
 }
 
 mark[data-highlighted-chars] {
