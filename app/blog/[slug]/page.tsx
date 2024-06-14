@@ -155,7 +155,7 @@ export default async function Blog({ params }: Props) {
               <span className="transition-all text-sm mb-1 text-neutral-500 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-300">
                 Previous
               </span>
-              <span className="w-20 sm:w-80 truncate transition-all text-md text-neutral-700 dark:text-neutral-300">
+              <span className="w-36 sm:w-60 md:w-75 truncate transition-all text-md text-neutral-700 dark:text-neutral-300">
                 {previousPost.metadata.title}
               </span>
             </Link>
@@ -173,7 +173,7 @@ export default async function Blog({ params }: Props) {
               <span className="transition-all text-sm mb-1 text-neutral-500 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-300">
                 Next
               </span>
-              <span className="w-20 sm:w-60 md:w-80 truncate transition-all text-md text-neutral-700 dark:text-neutral-300">
+              <span className="w-36 sm:w-60 md:w-75 truncate transition-all text-md text-neutral-700 dark:text-neutral-300">
                 {nextPost.metadata.title}
               </span>
             </Link>
