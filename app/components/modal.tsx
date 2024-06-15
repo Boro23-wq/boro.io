@@ -19,9 +19,7 @@ const Modal = ({ src, alt, onClose }) => {
 
   return (
     <div
-      className={`fixed inset-0 p-10 z-50 flex items-center justify-center backdrop-blur-xl ${
-        isClosing ? "animate-fadeOut" : "animate-fadeIn"
-      }`}
+      className="fixed inset-0 p-10 z-50 flex items-center justify-center backdrop-blur-xl"
       onClick={handleClose}
     >
       <div className="flex">
