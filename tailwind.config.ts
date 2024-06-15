@@ -2,16 +2,24 @@
 module.exports = {
   darkMode: ["class"],
   theme: {
-    screens: {
-      sm: "640px",
-      md: "768px",
-      lg: "1024px",
-      xl: "1280px",
-      "2xl": "1536px",
-    },
     extend: {
       fontFamily: {
         newsreader: ["var(--font-newsreader)"],
+      },
+      animation: {
+        fadeIn: "fadeIn .5s ease-in-out",
+        fadeOut: "fadeOut .5s ease-in-out",
+      },
+
+      keyframes: {
+        fadeIn: {
+          from: { opacity: 0 },
+          to: { opacity: 1 },
+        },
+        fadeOut: {
+          from: { opacity: 1 },
+          to: { opacity: 0 },
+        },
       },
     },
   },
