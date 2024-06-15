@@ -5,6 +5,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import rehypePrettyCode from "rehype-pretty-code";
 import Pre from "./pre";
+import RoundedImage from "./rounded-image";
 
 /** @type {import('rehype-pretty-code').Options} */
 const options = {
@@ -66,9 +67,9 @@ function CustomLink(props) {
   return <a target="_blank" rel="noopener noreferrer" {...props} />;
 }
 
-function RoundedImage(props) {
-  return <Image alt={props.alt} className="rounded-lg" {...props} />;
-}
+// function RoundedImage(props) {
+//   return <Image alt={props.alt} className="rounded-lg" {...props} />;
+// }
 
 // function Code({ children, ...props }) {
 //   let codeHTML = highlight(children);
