@@ -1,10 +1,5 @@
 @import "tailwindcss";
 
-/* * {
-  scrollbar-width: thin;
-  scrollbar-color: var(--mono5) transparent;
-} */
-
 ::selection {
   background-color: #47a3f3;
   color: #fefefe;
