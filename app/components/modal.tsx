@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { X } from "lucide-react";
 
-const Modal = ({ src, alt, onClose }) => {
+const Modal = ({ src, alt, onClose, isModalOpen }) => {
   const [isClosing, setIsClosing] = useState(false);
 
   const handleClose = () => {
     setIsClosing(true);
-    onClose(); // Match the timeout with the animation duration
+    onClose();
   };
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const Modal = ({ src, alt, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 p-10 z-50 flex items-center justify-center backdrop-blur-xl"
+      className="fixed inset-0 p-10 z-50 flex items-center justify-center backdrop-blur-xl image-zoom-in"
       onClick={handleClose}
     >
       <div className="flex">

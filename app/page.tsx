@@ -23,12 +23,12 @@ export default function Page() {
     <>
       <section>
         {/* intro */}
-        <div className="flex items-center mb-4">
+        <div className="fade-in delay-200 flex items-center mb-4">
           <h4 className="font-medium text-lg mb-5 tracking-normal">
             Sintu Boro
           </h4>
         </div>
-        <p className="text-md">
+        <p className="fade-in delay-400 text-md">
           <span className="heading">Elevating experiences</span>. I bring a
           blend of IT consulting, development, and design expertise. I have
           transformed complex business processes into efficient and
@@ -39,37 +39,41 @@ export default function Page() {
 
         {/* highlight */}
         <div className="flex items-center mt-14">
-          <h4 className="font-medium text-xl tracking-tight">my highlight</h4>
+          <h4 className="fade-in delay-600 font-medium text-xl tracking-tight">
+            my highlight
+          </h4>
         </div>
-        <div className="my-4">
+        <div className="my-4 fade-in delay-800">
           <Scroller />
         </div>
 
         {/* experience */}
-        <div className="flex items-center mt-10">
+        <div className="fade-in delay-1000 flex items-center mt-10">
           <h4 className="font-medium text-xl tracking-tight mb-2">
             current experience
           </h4>
         </div>
-        <div className="pt-4 flex w-full flex-col space-x-0 space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-          {`As a developer/programmer analyst, I specialize in customizing and
+        <div className="fade-in delay-1200">
+          <div className="pt-4 flex w-full flex-col space-x-0 space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+            {`As a developer/programmer analyst, I specialize in customizing and
         optimizing software platforms for improved efficiency and user
         experience. I focus on delivering impactful solutions that enhance both
         the functionality and usability of the systems I work with.`}
-        </div>
-        <div className="pt-4 flex w-full flex-col space-x-0 space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-          <p>
-            Currently, working with the{" "}
-            <Link
-              className="transition-all decoration-neutral-200 dark:decoration-neutral-600 underline underline-offset-4 dark:hover:text-neutral-200 hover:text-neutral-500"
-              href="https://www.beacontechinc.com/"
-              target="_blank"
-            >
-              Beacon Tech
-            </Link>{" "}
-            team as a Programmer Analyst IV for Wisconsin Department of Children
-            and Families (DCF).
-          </p>
+          </div>
+          <div className="pt-4 flex w-full flex-col space-x-0 space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+            <p>
+              Currently, working with the{" "}
+              <Link
+                className="transition-all decoration-neutral-200 dark:decoration-neutral-600 underline underline-offset-4 dark:hover:text-neutral-200 hover:text-neutral-500"
+                href="https://www.beacontechinc.com/"
+                target="_blank"
+              >
+                Beacon Tech
+              </Link>{" "}
+              team as a Programmer Analyst IV for Wisconsin Department of
+              Children and Families (DCF).
+            </p>
+          </div>
         </div>
       </section>
     </>

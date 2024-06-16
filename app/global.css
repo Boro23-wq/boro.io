@@ -257,6 +257,7 @@ blockquote {
   @apply italic border-l-4 ml-4 pl-4 dark:border-neutral-600 border-neutral-200;
 }
 
+/* home page scroller */
 .scroller {
   -webkit-mask-image: linear-gradient(
     to right,
@@ -279,4 +280,69 @@ blockquote {
     --gradient-size-start: 2px;
     --gradient-size-end: 20%;
   }
+}
+
+/* image animation fade-in fade-out */
+.image-zoom-in {
+  animation-name: image-zoom-enter;
+  animation-duration: 300ms;
+  animation-fill-mode: both;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes image-zoom-enter {
+  0% {
+    opacity: 0;
+    transform: scale(0.5); /* Start small */
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1); /* End at normal size */
+  }
+}
+
+/* home page animation fade-in */
+@keyframes enter {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation-name: enter;
+  animation-duration: 350ms;
+  animation-fill-mode: both;
+  animation-timing-function: ease-in-out;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-600 {
+  animation-delay: 600ms;
+}
+
+.delay-800 {
+  animation-delay: 800ms;
+}
+
+.delay-1000 {
+  animation-delay: 1000ms;
+}
+
+.delay-1200 {
+  animation-delay: 1200ms;
+}
+
+.delay-1400 {
+  animation-delay: 1400ms;
 }

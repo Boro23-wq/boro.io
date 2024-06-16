@@ -25,7 +25,12 @@ const RoundedImage = (props) => {
       />
 
       {isModalOpen && (
-        <Modal src={props.src} alt={props.alt} onClose={handleCloseModal} />
+        <Modal
+          src={props.src}
+          alt={props.alt}
+          onClose={handleCloseModal}
+          isModalOpen={isModalOpen}
+        />
       )}
     </>
   );
