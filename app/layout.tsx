@@ -18,9 +18,11 @@ const newsreader = Newsreader({
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "Home | Boro",
-    template: "%s | Boro",
+    default: "Sintu Boro",
+    template: "%s | Sintu Boro",
   },
+  description: "Software designer, developer, and blogger.",
+
   icons: {
     apple: [
       {
@@ -55,10 +57,9 @@ export const metadata: Metadata = {
       },
     ],
   },
-  description: "Developer, and blogger.",
   openGraph: {
     title: "Sintu Boro",
-    description: "Developer, and blogger.",
+    description: "Software designer, developer, and blogger.",
     url: baseUrl,
     siteName: "Sintu Boro",
     locale: "en_US",
