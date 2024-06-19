@@ -215,14 +215,8 @@ mark[data-highlighted-chars] {
   text-wrap: balance;
 }
 
-.blog-blur:hover .title:not(:hover) {
-  filter: blur(4px);
-  transition: filter 0.25s;
-}
-
-.blog-blur .title:hover {
-  filter: blur(0);
-  transition: filter 0.25s;
+.blog-section:hover .title:not(:hover) {
+  @apply text-neutral-400 dark:text-neutral-600 transition-all;
 }
 
 pre::-webkit-scrollbar {

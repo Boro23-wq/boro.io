@@ -32,7 +32,7 @@ export default function Page() {
           <span className="heading">Elevating experiences</span>. I bring a
           blend of IT consulting, development, and design expertise. I have
           transformed complex business processes into efficient and
-          user-friendly solutions to help create seamless digital experiences.
+          user-friendly solutions to help create seamless digital experience.
           Explore my work and discover how I bridge the gap between
           functionality and user-centered design.
         </p>
@@ -55,14 +55,16 @@ export default function Page() {
         </div>
         <div className="fade-in delay-1200">
           <div className="pt-4 flex w-full flex-col space-x-0 space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-            {`As a developer/programmer analyst, I specialize in customizing and
-        optimizing software platforms for improved efficiency and user
-        experience. I focus on delivering impactful solutions that enhance both
-        the functionality and usability of the systems I work with.`}
+            <p>
+              As a Developer/Programmer Analyst IV, I specialize in customizing
+              and optimizing software platforms for improved efficiency and user
+              experience. I focus on delivering impactful solutions that enhance
+              both the functionality and usability of the systems I work with.
+            </p>
           </div>
           <div className="pt-4 flex w-full flex-col space-x-0 space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
             <p>
-              Currently, working with the{" "}
+              Currently, I am working with the{" "}
               <Link
                 className="transition-all decoration-neutral-200 dark:decoration-neutral-600 underline underline-offset-4 dark:hover:text-neutral-200 hover:text-neutral-500"
                 href="https://www.beacontechinc.com/"
@@ -72,6 +74,14 @@ export default function Page() {
               </Link>{" "}
               team as a Programmer Analyst IV for Wisconsin Department of
               Children and Families (DCF).
+            </p>
+          </div>
+          <div className="pt-4 flex w-full flex-col space-x-0 space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+            <p>
+              My daily responsibilities include developing code for Collibra
+              ingestion, working with automation scripts, conducting preliminary
+              testing, implementing workflows, addressing code issues, and
+              streamlining the asset management process, among other tasks.
             </p>
           </div>
         </div>

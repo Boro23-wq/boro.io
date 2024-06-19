@@ -73,7 +73,7 @@ export function BlogPosts({ page }: BlogPostsProps) {
         ))}
     </div>
   ) : (
-    <div className="blog-blur">
+    <div className="blog-section">
       {groupedBlogs.map(([year, posts]) => (
         <div key={year}>
           <div className="flex relative">
@@ -82,26 +82,28 @@ export function BlogPosts({ page }: BlogPostsProps) {
             </p>
             <hr className="ml-4 absolute left-10 right-0 top-1/2 transform -translate-y-1/2 border-t border-neutral-200 dark:border-neutral-800" />
           </div>
-          {posts.map((post) => {
+          {posts.map((post, index) => {
             const publishedDate = new Date(post.metadata.publishedAt);
             const month = String(publishedDate.getMonth() + 1).padStart(2, "0"); // Get the month and pad with leading zero if needed
             const date = String(publishedDate.getDate()).padStart(2, "0"); // Get the date and pad with leading zero if needed
 
             return (
-              <Link
-                key={post.slug}
-                className="mb-5 flex flex-col space-y-1"
-                href={`/blog/${post.slug}`}
-              >
-                <div className="items-center w-full flex justify-between  space-x-0 md:space-x-2">
-                  <p className="ml-14 title transition-all text-neutral-600 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-200 tracking-tight">
-                    {post.metadata.title}
-                  </p>
-                  <p className="text-sm text-neutral-400 dark:text-neutral-600">
-                    {month}/{date}
-                  </p>
-                </div>
-              </Link>
+              <>
+                <Link
+                  key={post.slug}
+                  className="flex flex-col"
+                  href={`/blog/${post.slug}`}
+                >
+                  <div className="my-3.5 items-center w-full flex justify-between space-x-0 md:space-x-2">
+                    <p className="ml-14 title transition-all text-neutral-800 hover:text-neutral-800 dark:text-neutral-200 dark:hover:text-neutral-200 tracking-tight">
+                      {post.metadata.title}
+                    </p>
+                    <p className="text-sm text-neutral-400 dark:text-neutral-600">
+                      {month}/{date}
+                    </p>
+                  </div>
+                </Link>
+              </>
             );
           })}
         </div>

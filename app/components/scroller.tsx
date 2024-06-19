@@ -18,9 +18,9 @@ const Scroller = () => {
               >
                 Before You memo()
               </Link>
-              <ArrowUpRightIcon className="text-neutral-400 ml-1 h-4 w-4" />
+              <ArrowUpRightIcon className="text-neutral-500 ml-1 h-4 w-4" />
             </div>
-            <p className="text-wrap md:text-wrap text-md font-normal text-neutral-500 mt-0">
+            <p className="text-wrap md:text-wrap text-md font-normal text-neutral-500 mt-1">
               Rendering optimizations that come naturally.
             </p>
           </div>
@@ -33,9 +33,9 @@ const Scroller = () => {
               >
                 Inversion of control
               </Link>
-              <ArrowUpRightIcon className="text-neutral-400 ml-1 h-4 w-4" />
+              <ArrowUpRightIcon className="text-neutral-500 ml-1 h-4 w-4" />
             </div>
-            <p className="text-wrap md:text-wrap text-md font-normal text-neutral-500 mt-0">
+            <p className="text-wrap md:text-wrap text-md font-normal text-neutral-500 mt-1">
               Make code less nightmare to use and maintain.
             </p>
           </div>
@@ -51,7 +51,7 @@ const Scroller = () => {
             >
               Netflix streaming
             </Link>
-            <p className="text-wrap md:text-wrap text-md font-normal text-neutral-500 mt-0">
+            <p className="text-wrap md:text-wrap text-md font-normal text-neutral-500 mt-1">
               System behind the tremendous scale.
             </p>
           </div>
@@ -62,7 +62,7 @@ const Scroller = () => {
             >
               Module federation
             </Link>
-            <p className="text-wrap md:text-wrap text-md font-normal text-neutral-500 mt-0">
+            <p className="text-wrap md:text-wrap text-md font-normal text-neutral-500 mt-1">
               Architecture using reusable components.
             </p>
           </div>
@@ -73,7 +73,7 @@ const Scroller = () => {
             >
               All blogs
             </Link>
-            <p className="text-wrap md:text-wrap text-md font-normal text-neutral-500 mt-0">
+            <p className="text-wrap md:text-wrap text-md font-normal text-neutral-500 mt-1">
               More insights on design and code.
             </p>
           </div>
@@ -91,7 +91,7 @@ const Scroller = () => {
                 Carely
               </Link>
             </div>
-            <p className="text-wrap md:text-wrap text-md font-normal text-neutral-500 mt-0">
+            <p className="text-wrap md:text-wrap text-md font-normal text-neutral-500 mt-1">
               Care co-ordination and management portal.
             </p>
           </div>
@@ -104,7 +104,7 @@ const Scroller = () => {
                 UI/UX Design
               </Link>
             </div>
-            <p className="text-wrap md:text-wrap text-md font-normal text-neutral-500 mt-0">
+            <p className="text-wrap md:text-wrap text-md font-normal text-neutral-500 mt-1">
               My interaction with web design and what I've built.
             </p>
           </div>
@@ -117,7 +117,7 @@ const Scroller = () => {
                 All projects
               </Link>
             </div>
-            <p className="text-wrap md:text-wrap text-md font-normal text-neutral-500 mt-0">
+            <p className="text-wrap md:text-wrap text-md font-normal text-neutral-500 mt-1">
               More design and development projects.
             </p>
           </div>
