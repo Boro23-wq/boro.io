@@ -13,6 +13,7 @@ const newsreader = Newsreader({
   weight: ["400"],
   subsets: ["latin"],
   variable: "--font-newsreader",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -22,7 +23,6 @@ export const metadata: Metadata = {
     template: "%s | Sintu Boro",
   },
   description: "Software designer, developer, and blogger.",
-
   icons: {
     apple: [
       {

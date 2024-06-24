@@ -6,6 +6,7 @@ type BlogPost = {
   metadata: {
     publishedAt: string;
     title: string;
+    summary: string;
   };
 };
 
@@ -88,22 +89,31 @@ export function BlogPosts({ page }: BlogPostsProps) {
             const date = String(publishedDate.getDate()).padStart(2, "0"); // Get the date and pad with leading zero if needed
 
             return (
-              <>
+              <div key={index}>
                 <Link
                   key={post.slug}
                   className="flex flex-col"
                   href={`/blog/${post.slug}`}
                 >
-                  <div className="my-3.5 items-center w-full flex justify-between space-x-0 md:space-x-2">
-                    <p className="ml-14 title transition-all text-neutral-800 hover:text-neutral-800 dark:text-neutral-200 dark:hover:text-neutral-200 tracking-tight">
-                      {post.metadata.title}
-                    </p>
-                    <p className="text-sm text-neutral-400 dark:text-neutral-600">
-                      {month}/{date}
+                  <div className="my-3.5">
+                    <div className="items-start w-full flex justify-between space-x-0 md:space-x-2">
+                      <p className="ml-14 mb-2.5 text-semibold title transition-all text-neutral-800 hover:text-neutral-800 dark:text-neutral-200 dark:hover:text-neutral-200 tracking-tight">
+                        {post.metadata.title}
+                      </p>
+
+                      <p className="text-sm text-neutral-400 dark:text-neutral-600">
+                        {month}/{date}
+                      </p>
+                    </div>
+
+                    <p className="ml-14 eclipse text-neutral-800 dark:text-neutral-600 tracking-tight">
+                      {post.metadata.summary.length > 100
+                        ? post.metadata.summary.substring(0, 150) + "..."
+                        : post.metadata.summary}
                     </p>
                   </div>
                 </Link>
-              </>
+              </div>
             );
           })}
         </div>
