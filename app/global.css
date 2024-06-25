@@ -216,7 +216,7 @@ mark[data-highlighted-chars] {
 }
 
 .blog-section:hover .title:not(:hover) {
-  @apply text-neutral-400 dark:text-neutral-600 transition-all;
+  @apply text-neutral-600 dark:text-neutral-400 transition-all;
 }
 
 pre::-webkit-scrollbar {

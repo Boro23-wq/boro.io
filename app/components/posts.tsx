@@ -83,6 +83,7 @@ export function BlogPosts({ page }: BlogPostsProps) {
             </p>
             <hr className="ml-4 absolute left-10 right-0 top-1/2 transform -translate-y-1/2 border-t border-neutral-200 dark:border-neutral-800" />
           </div>
+
           {posts.map((post, index) => {
             const publishedDate = new Date(post.metadata.publishedAt);
             const month = String(publishedDate.getMonth() + 1).padStart(2, "0"); // Get the month and pad with leading zero if needed
@@ -97,7 +98,7 @@ export function BlogPosts({ page }: BlogPostsProps) {
                 >
                   <div className="my-3.5">
                     <div className="items-start w-full flex justify-between space-x-0 md:space-x-2">
-                      <p className="ml-14 mb-2.5 text-semibold title transition-all text-neutral-800 hover:text-neutral-800 dark:text-neutral-200 dark:hover:text-neutral-200 tracking-tight">
+                      <p className="ml-14 mb-2.5 title transition-all text-neutral-800 hover:text-neutral-800 dark:text-neutral-200 dark:hover:text-neutral-200 tracking-tight">
                         {post.metadata.title}
                       </p>
 
@@ -106,7 +107,7 @@ export function BlogPosts({ page }: BlogPostsProps) {
                       </p>
                     </div>
 
-                    <p className="ml-14 eclipse text-neutral-800 dark:text-neutral-600 tracking-tight">
+                    <p className="ml-14 eclipse text-neutral-400 dark:text-neutral-600 tracking-tight">
                       {post.metadata.summary.length > 100
                         ? post.metadata.summary.substring(0, 150) + "..."
                         : post.metadata.summary}
