@@ -106,7 +106,7 @@ body {
 }
 
 .prose pre code > [data-line]::before {
-  @apply text-neutral-400 dark:text-neutral-500 mr-8 inline-block text-right w-4;
+  @apply text-neutral-400 dark:text-neutral-500 mr-8 inline-block text-right w-2;
   counter-increment: line;
   content: counter(line);
 }
@@ -125,7 +125,7 @@ body {
 }
 
 pre [data-line] {
-  @apply px-4;
+  @apply px-6;
 }
 
 figcaption[data-rehype-pretty-code-title] {
@@ -133,7 +133,7 @@ figcaption[data-rehype-pretty-code-title] {
 }
 
 span[data-highlighted-line] {
-  @apply bg-neutral-100 dark:bg-neutral-700 border-l-3 border-neutral-500 dark:border-neutral-400;
+  @apply bg-neutral-100 dark:bg-neutral-700 pl-5 border-l-3 border-neutral-500 dark:border-neutral-400;
 }
 
 mark[data-highlighted-chars] {
